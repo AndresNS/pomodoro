@@ -2,11 +2,11 @@
 /*eslint indent: ["error", "tab", { "SwitchCase": 1 }]*/
 
 //Default values
-let pomodoroMinutes = 0;
-let pomodoroSeconds = 3;
-let shortBreakMinutes = 0;
-let shortBreakSeconds = 5;
-let LongBreakMinutes = 0;
+let pomodoroMinutes = 2;
+let pomodoroSeconds = 10;
+let shortBreakMinutes = 2;
+let shortBreakSeconds = 15;
+let LongBreakMinutes = 2;
 let LongBreakSeconds = 10;
 
 // 0 = pomodoro, 1 = short break, 2 = long break
@@ -92,7 +92,7 @@ Timer.prototype.reset = function () {
 	this.running = false;
 	this.done = true;
 	this.currentMinute = this.initialMinutes;
-	this.currentSecond = this.initialSeconds;
+	this.currentSecond = this.initialSeconds+1;
 };
 
 
@@ -104,7 +104,7 @@ Timer.prototype.reset = function () {
 
 let it = runSequence();
 //starts the sequence
-it.next();
+// it.next();
 
 function* runSequence() {
 	for (let i = 0; i < sequence.length; i++) {
@@ -120,6 +120,8 @@ function* runSequence() {
 				break;
 		}
 	}
+
+
 }
 
 
