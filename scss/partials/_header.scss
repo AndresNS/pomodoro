@@ -1,18 +1,21 @@
 .header {
-    background: $color-primary;
+    background-color: $color-primary;
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding: 1.2em 0;
 
-    &__logo>a {
-        font-weight: 600;
-        color: white;
-        text-decoration: none;
+    &__logo{
+        z-index: 2;
+        >a {
+            font-weight: 600;
+            color: white;
+            text-decoration: none;
+            
+        }
     }
 
-    &__toggle {
-
+    &__hamburger {
         >a {
             display: flex;
 
@@ -23,6 +26,32 @@
     }
 
     &__nav {
-        display: none;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        background-color: $color-primary;
+        clip-path: circle(70vh at 50% 0);
+        // -webkit-clip-path: circle(20vh at 50% 50%);
+        transition: all 1s ease-out;
+    }
+
+    &__close {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 30vh;
+        background-color: $color-secondary;
+        clip-path: circle(5vh at 50% 50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        >a {
+            color: white;
+            text-decoration: none;
+        }
     }
 }

@@ -1,0 +1,17 @@
+.menu {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    margin-top: 70px;
+
+    li.menu__item {
+        list-style: none;
+        text-align: center;
+        >a {
+            display: block;
+            padding: 2em 0;
+            text-decoration: none;
+            color: white;
+        }
+    }
+}
