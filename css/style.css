@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap");
+:root {
+  box-sizing: border-box;
+}
+
+*,
+::after,
+::before {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Montserrat, Arial, sans-serif;
+}
+
+.header {
+  background: #23BDDC;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1.2em 0;
+}
+.header__logo > a {
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+}
+.header__toggle > a {
+  display: flex;
+}
+.header__toggle > a > img {
+  width: 1.6em;
+}
+.header__nav {
+  display: none;
+}
+
+/*# sourceMappingURL=style.css.map */

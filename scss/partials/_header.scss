@@ -1,0 +1,28 @@
+.header {
+    background: $color-primary;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1.2em 0;
+
+    &__logo>a {
+        font-weight: 600;
+        color: white;
+        text-decoration: none;
+    }
+
+    &__toggle {
+
+        >a {
+            display: flex;
+
+            >img {
+                width: 1.6em;
+            }
+        }
+    }
+
+    &__nav {
+        display: none;
+    }
+}
