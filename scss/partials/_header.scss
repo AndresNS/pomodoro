@@ -1,13 +1,17 @@
 .header {
-    position: relative;
+    position: fixed;
+    width: 100%;
     background-color: $color-primary;
     display: flex;
     align-items: center;
     padding: 1.2em 0;
 
     &__logo {
-        z-index: 2;
+        position: relative;
+        left: 40px;
+        z-index: map-get($z-index, header-items);
         transition: all 0.8s ease;
+
         >a {
             font-weight: 600;
             color: white;
@@ -17,13 +21,22 @@
 
     &__hamburger {
         position: absolute;
-        right: 0;
+        z-index: map-get($z-index, header-items);
+        right: 40px;
+        opacity: 1;
+        transition: opacity 0.3s ease;
+
         >a {
             display: block;
 
             >img {
                 width: 1.6em;
             }
+        }
+
+        &.hidden {
+            pointer-events: none;
+            opacity: 0;
         }
     }
 
@@ -37,12 +50,10 @@
         justify-content: center;
         background-color: $color-primary;
         clip-path: circle(1vh at 50% 0);
-        // -webkit-clip-path: circle(20vh at 50% 50%);
         transition: clip-path 0.8s ease-out;
 
         &.open {
             clip-path: circle(70vh at 50% 0);
-            // pointer-events: all;
         }
     }
 
@@ -58,13 +69,29 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
+        >a {
+            text-decoration: none;
+            display: flex;
+
+            >img {
+                color: white;
+                width: 1.4em;
+                opacity: 0;
+                transition: opacity 1s ease;
+
+                &.close{
+                    opacity: 1;
+                }
+            }
+        }
+
         &.visible{
             clip-path: circle(5vh at 50% 50%);
         }
-
-        >a {
-            color: white;
-            text-decoration: none;
+        
+        &:active{
+            background-color: $color-secondary-light;
         }
     }
 }

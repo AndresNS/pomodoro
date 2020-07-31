@@ -1,8 +1,8 @@
 //Colors
-$color-primary-dark: #1991AA;
-$color-primary: #23BDDC;
-$color-secondary-dark: #EC7600;
-$color-secondary: #FF952C;
+$color-primary: #1991AA;
+$color-primary-light: #23BDDC;
+$color-secondary: #EC7600;
+$color-secondary-light: #FF952C;
 
 $color-gray: #B7B7B7;
 $color-gray-dark: #5B5B5B;
@@ -12,3 +12,13 @@ $color-gray-light: #EFEFEF;
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap');
 
 $font-family-base: Montserrat, Arial, sans-serif;
+
+//z-index levels
+$z-index:(
+    header-items: 1000,
+    header: 800,
+    modal:600,
+    body: 400,
+);
+
+

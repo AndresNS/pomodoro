@@ -16,14 +16,17 @@ body {
 }
 
 .header {
-  position: relative;
-  background-color: #23BDDC;
+  position: fixed;
+  width: 100%;
+  background-color: #1991AA;
   display: flex;
   align-items: center;
   padding: 1.2em 0;
 }
 .header__logo {
-  z-index: 2;
+  position: relative;
+  left: 40px;
+  z-index: 1000;
   transition: all 0.8s ease;
 }
 .header__logo > a {
@@ -33,13 +36,20 @@ body {
 }
 .header__hamburger {
   position: absolute;
-  right: 0;
+  z-index: 1000;
+  right: 40px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
 }
 .header__hamburger > a {
   display: block;
 }
 .header__hamburger > a > img {
   width: 1.6em;
+}
+.header__hamburger.hidden {
+  pointer-events: none;
+  opacity: 0;
 }
 .header__nav {
   position: fixed;
@@ -49,7 +59,7 @@ body {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  background-color: #23BDDC;
+  background-color: #1991AA;
   clip-path: circle(1vh at 50% 0);
   transition: clip-path 0.8s ease-out;
 }
@@ -62,19 +72,31 @@ body {
   bottom: 0;
   width: 100%;
   height: 30vh;
-  background-color: #FF952C;
+  background-color: #EC7600;
   clip-path: circle(0vh at 50% 50%);
   transition: clip-path 0.4s ease-in-out 0.7s;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+.header__close > a {
+  text-decoration: none;
+  display: flex;
+}
+.header__close > a > img {
+  color: white;
+  width: 1.4em;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.header__close > a > img.close {
+  opacity: 1;
+}
 .header__close.visible {
   clip-path: circle(5vh at 50% 50%);
 }
-.header__close > a {
-  color: white;
-  text-decoration: none;
+.header__close:active {
+  background-color: #FF952C;
 }
 
 .menu {
@@ -86,6 +108,22 @@ body {
 .menu li.menu__item {
   list-style: none;
   text-align: center;
+  opacity: 0;
+}
+.menu li.menu__item:nth-child(1) {
+  transition: opacity 0.5s ease 0.2s;
+}
+.menu li.menu__item:nth-child(2) {
+  transition: opacity 0.5s ease 0.4s;
+}
+.menu li.menu__item:nth-child(3) {
+  transition: opacity 0.5s ease 0.6s;
+}
+.menu li.menu__item:nth-child(4) {
+  transition: opacity 0.5s ease 0.8s;
+}
+.menu li.menu__item.fade {
+  opacity: 1;
 }
 .menu li.menu__item > a {
   display: block;
