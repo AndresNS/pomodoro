@@ -1,23 +1,25 @@
 .header {
+    position: relative;
     background-color: $color-primary;
     display: flex;
-    justify-content: space-around;
     align-items: center;
     padding: 1.2em 0;
 
-    &__logo{
+    &__logo {
         z-index: 2;
+        transition: all 0.8s ease;
         >a {
             font-weight: 600;
             color: white;
             text-decoration: none;
-            
         }
     }
 
     &__hamburger {
+        position: absolute;
+        right: 0;
         >a {
-            display: flex;
+            display: block;
 
             >img {
                 width: 1.6em;
@@ -34,21 +36,32 @@
         align-items: flex-start;
         justify-content: center;
         background-color: $color-primary;
-        clip-path: circle(70vh at 50% 0);
+        clip-path: circle(1vh at 50% 0);
         // -webkit-clip-path: circle(20vh at 50% 50%);
-        transition: all 1s ease-out;
+        transition: clip-path 0.8s ease-out;
+
+        &.open {
+            clip-path: circle(70vh at 50% 0);
+            // pointer-events: all;
+        }
     }
 
     &__close {
+        cursor: pointer;
         position: fixed;
         bottom: 0;
         width: 100%;
         height: 30vh;
         background-color: $color-secondary;
-        clip-path: circle(5vh at 50% 50%);
+        clip-path: circle(0vh at 50% 50%);
+        transition: clip-path 0.4s ease-in-out 0.7s;
         display: flex;
         justify-content: center;
         align-items: center;
+        &.visible{
+            clip-path: circle(5vh at 50% 50%);
+        }
+
         >a {
             color: white;
             text-decoration: none;
