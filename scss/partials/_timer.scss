@@ -15,20 +15,20 @@
 
         &__current {
             position: absolute;
-            top: 8vw;
-            left: 8vw;
+            top: 6vw;
+            left: 6vw;
             width: 80vw;
             height: 80vw;
             border: 2vw solid $color-primary;
             border-radius: 50%;
-            animation: progress linear 3s infinite;
-            // animation: progress linear 1s infinite paused;
+            // animation: progress linear 3s infinite;
+            animation: progress linear 1s infinite paused;
         }
 
         &__bg {
             position: absolute;
-            top: 8vw;
-            left: 8vw;
+            top: 6vw;
+            left: 6vw;
             width: 80vw;
             height: 80vw;
             border: 2vw solid $color-gray;
@@ -37,7 +37,7 @@
     }
 
     &__display {
-        margin-top: -.21em;
+        margin-top: -.2em;
         margin-left: -.21em;
         font-size: $font-size-XL;
     }

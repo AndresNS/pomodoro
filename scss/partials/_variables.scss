@@ -15,13 +15,14 @@ $font-family-base: Montserrat, Arial, sans-serif;
 
 //Font size
 $font-size-L: 3rem;
-$font-size-XL: 4rem;
+$font-size-XL: 4rem; //timer
 
 //z-index levels
 $z-index:(
     header-items: 1000,
     header: 800,
     modal:600,
+    timer-sequence-controls: 500,
     body: 400,
 );
 

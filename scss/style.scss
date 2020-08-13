@@ -1,16 +1,15 @@
 //Normalize.css
 @import "partials/normalize";
 
-//Variables
-@import "partials/variables";
-
 //Utils
+@import "partials/variables";
 @import "partials/animations";
 
 //Base styles
 @import "partials/base";
+
+//Modules
 @import "partials/header";
 @import "partials/menu";
 @import "partials/timer";
-
-//Modules
+@import "partials/sequence-display";
