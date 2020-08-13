@@ -8,16 +8,17 @@
         list-style: none;
         text-align: center;
         opacity: 0;
+
         @for $i from 1 through 4 {
             &:nth-child(#{$i}) {
                 transition: opacity 0.5s ease $i*0.2s;
             }
         }
-        
+
         &.fade {
             opacity: 1;
         }
-        
+
         >a {
             display: block;
             padding: 2em 0;

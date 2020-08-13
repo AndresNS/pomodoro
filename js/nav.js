@@ -8,12 +8,12 @@ const btnCloseNav = document.querySelector(".header__close");
 const btnCloseNavImg = document.querySelector(".header__close>a>img");
 const menuItems = document.querySelectorAll(".menu li");
 
-let headerWidth = header.offsetWidth;
+let headerWidth = header.getBoundingClientRect().width;
 let logoWidth = headerLogo.getBoundingClientRect().width;
 let translateValue = Math.round(headerWidth / 2 - logoWidth / 2);
 
 window.onresize = function () {
-	headerWidth = header.offsetWidth;
+	headerWidth = header.getBoundingClientRect().width;
 	logoWidth = headerLogo.getBoundingClientRect().width;
 	translateValue = Math.round(headerWidth / 2 - logoWidth / 2 - 40);
 };
