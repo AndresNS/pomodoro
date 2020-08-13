@@ -340,19 +340,19 @@ template {
 
 @keyframes progress {
   0% {
-    clip-path: polygon(50% 50%, 50% 150%, 50% 150%, 50% 150%, 50% 150%, 50% 150%);
+    clip-path: polygon(50% 50%, 50% -50%, 50% -50%, 50% -50%, 50% -50%, 50% -50%);
   }
   25% {
-    clip-path: polygon(50% 50%, -50% 50%, 50% 150%, 50% 150%, 50% 150%, 50% 150%);
+    clip-path: polygon(50% 50%, 150% 50%, 50% -50%, 50% -50%, 50% -50%, 50% -50%);
   }
   50% {
-    clip-path: polygon(50% 50%, 50% -50%, -50% 50%, 50% 150%, 50% 150%, 50% 150%);
+    clip-path: polygon(50% 50%, 50% 150%, 150% 50%, 50% -50%, 50% -50%, 50% -50%);
   }
   75% {
-    clip-path: polygon(50% 50%, 150% 50%, 50% -50%, -50% 50%, 50% 150%, 50% 150%);
+    clip-path: polygon(50% 50%, -50% 50%, 50% 150%, 150% 50%, 50% -50%, 50% -50%);
   }
   100% {
-    clip-path: polygon(50% 50%, 50% 150%, 150% 50%, 50% -50%, -50% 50%, 50% 150%);
+    clip-path: polygon(50% 50%, 50% -50%, -50% 50%, 50% 150%, 150% 50%, 50% -50%);
   }
 }
 :root {
@@ -490,32 +490,41 @@ body {
 
 .timer {
   position: relative;
-  background: red;
+  width: 100vw;
+  height: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .timer__progress-bar {
-  width: 100%;
-}
-.timer__display {
-  text-align: center;
-  font-size: 4rem;
-}
-
-.progress {
   position: absolute;
+  width: 100%;
+  height: 100vw;
   top: 0;
-  width: 10rem;
-  height: 10rem;
-  border: 0.5rem solid #1991AA;
+}
+.timer__progress-bar__current {
+  position: absolute;
+  top: 8vw;
+  left: 8vw;
+  width: 80vw;
+  height: 80vw;
+  border: 2vw solid #1991AA;
   border-radius: 50%;
   animation: progress linear 3s infinite;
 }
-.progress-bg {
+.timer__progress-bar__bg {
   position: absolute;
-  top: 0;
-  width: 10rem;
-  height: 10rem;
-  border: 0.5rem solid #B7B7B7;
+  top: 8vw;
+  left: 8vw;
+  width: 80vw;
+  height: 80vw;
+  border: 2vw solid #B7B7B7;
   border-radius: 50%;
+}
+.timer__display {
+  margin-top: -0.21em;
+  margin-left: -0.21em;
+  font-size: 4rem;
 }
 
 /*# sourceMappingURL=style.css.map */
