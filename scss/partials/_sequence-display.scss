@@ -1,6 +1,7 @@
 .sequence-display {
     position: relative;
     width: 100%;
+    overflow: hidden;
     // display: flex;
     // align-items: center;
 
@@ -9,11 +10,12 @@
         list-style: none;
         padding: 0;
         margin: 0;
-        overflow: hidden;
+        transition: transform 1s ease;
 
         >li {
             display: inline-block;
             min-width: 33.333%;
+            max-width: 33.333%;
             white-space: nowrap;
             text-align: center;
             font-size: $font-size-M;
