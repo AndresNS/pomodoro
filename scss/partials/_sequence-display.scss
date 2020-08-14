@@ -1,21 +1,54 @@
 .sequence-display {
-    background: lightcoral;
+    position: relative;
     width: 100%;
-    &__list{
+    // display: flex;
+    // align-items: center;
+
+    &__list {
         display: flex;
-        align-items: center;
-        background-color: lightseagreen;
         list-style: none;
         padding: 0;
         margin: 0;
-        // width: 200vw;
-        // overflow: hidden;
+        overflow: hidden;
 
-        &>li{
-            margin: 0 2em;
+        >li {
+            display: inline-block;
+            min-width: 33.333%;
             white-space: nowrap;
+            text-align: center;
+            font-size: $font-size-M;
+        }
+    }
+
+    &__controls {
+        position: absolute;
+        z-index: map-get($z-index, timer-sequence-controls);
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        background-image: radial-gradient(40vw at 50% 50%, transparent, #fff);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        &__arrow {
+            img {
+                width: 0.7em;
+                display: flex;
+                align-items: center;
+            }
+
+            &:nth-child(1) {
+                margin-left: 2em;
+
+                img {
+                    transform: scaleX(-1);
+                }
+            }
+
+            &:nth-child(2) {
+                margin-right: 2em;
+            }
         }
     }
 }
-
-//z-index: map-get($z-index, timer-sequence-controls);
