@@ -1,0 +1,22 @@
+.timer-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__button {
+        display: flex;
+        margin: 0 0.8em;
+        background-color: $color-gray-light;
+        padding: 1em;
+        border-radius: 50%;
+        transition: transform 0.3s ease;
+
+        &>img {
+            width: 1em;
+            color: $color-primary;
+        }
+        &:hover{
+            transform: scale(1.2);
+        }
+    }
+}

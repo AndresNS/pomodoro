@@ -2,8 +2,6 @@
     position: relative;
     width: 100%;
     overflow: hidden;
-    // display: flex;
-    // align-items: center;
 
     &__list {
         display: flex;
@@ -34,6 +32,8 @@
         align-items: center;
 
         &__arrow {
+            transition: transform 0.3s ease;
+
             img {
                 width: 0.7em;
                 display: flex;
@@ -50,6 +50,10 @@
 
             &:nth-child(2) {
                 margin-right: 2em;
+            }
+
+            &:hover {
+                transform: scale(1.2);
             }
         }
     }

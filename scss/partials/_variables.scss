@@ -1,12 +1,18 @@
-//Colors
-$color-primary: #1991AA;
-$color-primary-light: #23BDDC;
-$color-secondary: #EC7600;
-$color-secondary-light: #FF952C;
+//Colors 
+$color-cyan: #23BDDC;
+$color-cyan-dark:#1991AA ;
+$color-orange: #FF952C;
+$color-orange-dark: #EC7600;
 
 $color-gray: #B7B7B7;
 $color-gray-dark: #5B5B5B;
 $color-gray-light: #EFEFEF;
+
+$color-primary: $color-cyan;
+$color-primary-alt: $color-cyan-dark;
+$color-secondary: $color-orange;
+$color-secondary-alt: $color-orange-dark;
+
 
 //Fonts Families
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap');
@@ -17,6 +23,9 @@ $font-family-base: Montserrat, Arial, sans-serif;
 $font-size-M: 1.2rem;
 $font-size-L: 3rem;
 $font-size-XL: 4rem; //timer
+
+//Spacing
+$section-margin: 2em;
 
 //z-index levels
 $z-index:(
