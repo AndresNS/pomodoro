@@ -1,44 +1,45 @@
 .timer {
     position: relative;
-    // background: red;
-    width: 100vw;
-    height: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    
+
+    &::before {
+        content: "";
+        display: block;
+        padding-top: 100%;
+    }
 
     &__progress-bar {
         position: absolute;
         width: 100%;
-        height: 100vw;
-        top: 0;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         &__current {
             position: absolute;
-            top: 6vw;
-            left: 6vw;
-            width: 80vw;
-            height: 80vw;
-            border: 2vw solid $color-primary;
+            width: 100%;
+            height: 100%;
+            border: 0.5em solid $color-primary;
             border-radius: 50%;
-            // animation: progress linear 3s infinite;
-            animation: progress linear 1s infinite paused;
+            animation: progress linear 3s infinite;
+            // animation: progress linear 1s infinite paused;
         }
 
         &__bg {
             position: absolute;
-            top: 6vw;
-            left: 6vw;
-            width: 80vw;
-            height: 80vw;
-            border: 2vw solid $color-gray;
+            width: 100%;
+            height: 100%;
+            border: 0.5em solid $color-gray-light;
             border-radius: 50%;
         }
     }
 
     &__display {
-        margin-top: -.2em;
-        margin-left: -.21em;
         font-size: $font-size-XL;
     }
 }

@@ -371,6 +371,11 @@ body {
   font-family: Montserrat, Arial, sans-serif;
 }
 
+.main {
+  width: 80%;
+  margin: 7em auto 0;
+}
+
 .section-spacing-top {
   margin-top: 2em;
 }
@@ -381,17 +386,19 @@ body {
 
 .header {
   position: fixed;
+  top: 0;
   width: 100%;
   background-color: #23BDDC;
   display: flex;
   align-items: center;
   padding: 1.2em 0;
+  z-index: 800;
 }
 .header__logo {
   position: relative;
   left: 40px;
   z-index: 1000;
-  transition: all 0.8s ease;
+  transition: transform 0.8s ease;
 }
 .header__logo > a {
   font-weight: 600;
@@ -424,8 +431,9 @@ body {
   align-items: flex-start;
   justify-content: center;
   background-color: #23BDDC;
-  clip-path: circle(1vh at 50% 0);
+  clip-path: circle(0vh at 50% 0);
   transition: clip-path 0.8s ease-out;
+  z-index: 800;
 }
 .header__nav.open {
   clip-path: circle(70vh at 50% 0);
@@ -468,6 +476,7 @@ body {
   margin: 0;
   width: 100%;
   margin-top: 70px;
+  z-index: 800;
 }
 .menu li.menu__item {
   list-style: none;
@@ -498,40 +507,40 @@ body {
 
 .timer {
   position: relative;
-  width: 100vw;
-  height: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+.timer::before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
 .timer__progress-bar {
   position: absolute;
   width: 100%;
-  height: 100vw;
-  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .timer__progress-bar__current {
   position: absolute;
-  top: 6vw;
-  left: 6vw;
-  width: 80vw;
-  height: 80vw;
-  border: 2vw solid #23BDDC;
+  width: 100%;
+  height: 100%;
+  border: 0.5em solid #23BDDC;
   border-radius: 50%;
-  animation: progress linear 1s infinite paused;
+  animation: progress linear 3s infinite;
 }
 .timer__progress-bar__bg {
   position: absolute;
-  top: 6vw;
-  left: 6vw;
-  width: 80vw;
-  height: 80vw;
-  border: 2vw solid #B7B7B7;
+  width: 100%;
+  height: 100%;
+  border: 0.5em solid #EFEFEF;
   border-radius: 50%;
 }
 .timer__display {
-  margin-top: -0.2em;
-  margin-left: -0.21em;
   font-size: 4rem;
 }
 

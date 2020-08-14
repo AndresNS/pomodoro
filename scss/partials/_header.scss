@@ -1,16 +1,18 @@
 .header {
     position: fixed;
+    top: 0;
     width: 100%;
     background-color: $color-primary;
     display: flex;
     align-items: center;
     padding: 1.2em 0;
+    z-index: map-get($z-index, header);
 
     &__logo {
         position: relative;
         left: 40px;
         z-index: map-get($z-index, header-items);
-        transition: all 0.8s ease;
+        transition: transform 0.8s ease;
 
         >a {
             font-weight: 600;
@@ -49,8 +51,9 @@
         align-items: flex-start;
         justify-content: center;
         background-color: $color-primary;
-        clip-path: circle(1vh at 50% 0);
+        clip-path: circle(0vh at 50% 0);
         transition: clip-path 0.8s ease-out;
+        z-index: map-get($z-index, header);
 
         &.open {
             clip-path: circle(70vh at 50% 0);

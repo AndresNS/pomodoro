@@ -10,7 +10,7 @@ const menuItems = document.querySelectorAll(".menu li");
 
 let headerWidth = header.getBoundingClientRect().width;
 let logoWidth = headerLogo.getBoundingClientRect().width;
-let translateValue = Math.round(headerWidth / 2 - logoWidth / 2);
+let translateValue = Math.round(headerWidth / 2 - logoWidth / 2 - 40);
 
 window.onresize = function () {
 	headerWidth = header.getBoundingClientRect().width;
