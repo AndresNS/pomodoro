@@ -6,8 +6,13 @@ let listItemTranslateValue = 0;
 let currentIndex = 1;
 let maxIndex = sequenceDisplayList.childElementCount - 1;
 
+window.onresize = function () {
+	listItemWidth = currentListItem.offsetWidth;
+};
+
 sequenceDisplayControls.forEach((item) => {
-	item.addEventListener("click", () => {
+	item.addEventListener("click", (e) => {
+		e.preventDefault();
 		if (item.classList.contains("left") && currentIndex > 1) {
 			listItemTranslateValue = listItemTranslateValue + listItemWidth;
 			sequenceDisplayList.style.transform = "translateX(" + listItemTranslateValue + "px)";
@@ -19,3 +24,4 @@ sequenceDisplayControls.forEach((item) => {
 		}
 	});
 });
+

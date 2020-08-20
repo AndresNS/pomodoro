@@ -12,11 +12,12 @@ let headerWidth = header.getBoundingClientRect().width;
 let logoWidth = headerLogo.getBoundingClientRect().width;
 let translateValue = Math.round(headerWidth / 2 - logoWidth / 2 - 40);
 
-window.onresize = function () {
+window.addEventListener("resize", () => {
 	headerWidth = header.getBoundingClientRect().width;
 	logoWidth = headerLogo.getBoundingClientRect().width;
 	translateValue = Math.round(headerWidth / 2 - logoWidth / 2 - 40);
-};
+	headerLogo.removeAttribute("style");
+});
 
 hamburger.addEventListener("click", () => {
 	toggleMenu(translateValue);
@@ -26,7 +27,7 @@ btnCloseNav.addEventListener("click", () => {
 	toggleMenu(0);
 });
 
-function toggleMenu(translateValue){
+function toggleMenu(translateValue) {
 	headerNav.classList.toggle("open");
 	btnCloseNav.classList.toggle("visible");
 	headerLogo.style.transform = "translateX(" + translateValue + "px)";

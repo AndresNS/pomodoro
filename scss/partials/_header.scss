@@ -83,18 +83,43 @@
                 opacity: 0;
                 transition: opacity 1s ease;
 
-                &.close{
+                &.close {
                     opacity: 1;
                 }
             }
         }
 
-        &.visible{
+        &.visible {
             clip-path: circle(5vh at 50% 50%);
         }
-        
-        &:active{
+
+        &:active {
             background-color: $color-secondary-alt;
+        }
+    }
+}
+
+@media (min-width: $screen-lg) {
+
+    .header {
+        position: relative;
+        justify-content: space-around;
+        &__logo {
+            position: relative;
+            transition: none;
+            left: 0;
+        }
+
+        &__nav {
+            position: relative;
+            width: auto;
+            height: auto;
+            clip-path: none;
+            transition: none;
+        }
+
+        &__hamburger, &__close {
+            display: none;
         }
     }
 }
