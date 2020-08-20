@@ -5,7 +5,6 @@
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap");
 html {
   line-height: 1.15;
   /* 1 */
@@ -368,7 +367,7 @@ template {
 body {
   margin: 0;
   padding: 0;
-  font-family: Montserrat, Arial, sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 .main {
@@ -376,6 +375,11 @@ body {
   margin: 7em auto 0;
 }
 
+@media (min-width: 1024px) {
+  .main {
+    margin-top: 4em;
+  }
+}
 .section-spacing-top {
   margin-top: 2em;
 }
@@ -577,6 +581,44 @@ body {
   font-size: 4rem;
 }
 
+@media (min-width: 1024px) {
+  .timer {
+    flex-direction: column-reverse;
+  }
+  .timer::before {
+    display: none;
+  }
+  .timer__progress-bar {
+    position: relative;
+    width: 50%;
+    height: 0.3em;
+  }
+  .timer__progress-bar__current {
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    animation: none;
+    display: flex;
+  }
+  .timer__progress-bar__current > .pomodoro > .fill {
+    background-color: #23BDDC;
+  }
+  .timer__progress-bar__current > .break > .fill {
+    background-color: #FF952C;
+  }
+  .timer__progress-bar__bg {
+    background-color: #EFEFEF;
+    border: none;
+    border-radius: 0;
+    display: flex;
+  }
+  .timer__progress-bar__bg > .pomodoro {
+    background-color: #B7B7B7;
+  }
+  .timer__progress-bar__bg > .break {
+    background-color: #EFEFEF;
+  }
+}
 .sequence-display {
   position: relative;
   width: 100%;

@@ -92,7 +92,7 @@ Timer.prototype.reset = function () {
 	this.running = false;
 	this.done = true;
 	this.currentMinute = this.initialMinutes;
-	this.currentSecond = this.initialSeconds+1;
+	this.currentSecond = this.initialSeconds + 1;
 };
 
 

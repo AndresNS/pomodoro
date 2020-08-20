@@ -19,6 +19,12 @@ body {
     margin: 7em auto 0;
 }
 
+@media (min-width: $screen-lg) {
+    .main {
+        margin-top: $section-margin * 2;
+    }
+}
+
 .section-spacing-top {
     margin-top: $section-margin;
 }

@@ -21,25 +21,70 @@
         justify-content: center;
 
         &__current {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border: 0.5em solid $color-primary;
-            border-radius: 50%;
+            @include circular-progress-bar($color-primary);
             animation: progress linear 3s infinite;
             // animation: progress linear 1s infinite paused;
         }
 
         &__bg {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border: 0.5em solid $color-gray-light;
-            border-radius: 50%;
+            @include circular-progress-bar($color-gray-light);
         }
     }
 
     &__display {
         font-size: $font-size-XL;
+    }
+}
+
+@media (min-width: $screen-lg) {
+    .timer {
+        // position: relative;
+        // width: 100%;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        flex-direction: column-reverse;
+        &::before {
+            display: none;
+        }
+    
+        &__progress-bar {
+            position: relative;
+            width: 50%;
+            height: .3em;
+            // align-items: center;
+            // justify-content: center;
+            
+            &__current {
+                width: 100%;
+                border: none;
+                border-radius: 0;
+                animation: none;
+                display: flex;
+                &>.pomodoro>.fill{
+                    background-color: $color-primary;
+                }
+                &>.break>.fill{
+                    background-color: $color-secondary;
+                }
+            }
+            
+            &__bg {
+                background-color: $color-gray-light;
+                border: none;
+                border-radius: 0;
+                display: flex;
+                &>.pomodoro{
+                    background-color: $color-gray;
+                }
+                &>.break{
+                    background-color: $color-gray-light;
+                }
+            }
+        }
+    
+        &__display {
+            // font-size: $font-size-XL;
+        }
     }
 }
