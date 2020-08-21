@@ -599,11 +599,12 @@ body {
     border-radius: 0;
     animation: none;
     display: flex;
+    transition: width 1s ease-in;
   }
-  .timer__progress-bar__current > .pomodoro {
+  .timer__progress-bar__current.pomodoro {
     background-color: #23BDDC;
   }
-  .timer__progress-bar__current > .break {
+  .timer__progress-bar__current.break {
     background-color: #FF952C;
   }
   .timer__progress-bar__bg {
@@ -611,12 +612,6 @@ body {
     border: none;
     border-radius: 0;
     display: flex;
-  }
-  .timer__progress-bar__bg > .pomodoro {
-    background-color: #B7B7B7;
-  }
-  .timer__progress-bar__bg > .break {
-    background-color: #EFEFEF;
   }
 }
 .sequence-display {
