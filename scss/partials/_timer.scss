@@ -61,10 +61,10 @@
                 border-radius: 0;
                 animation: none;
                 display: flex;
-                &>.pomodoro>.fill{
+                &>.pomodoro{
                     background-color: $color-primary;
                 }
-                &>.break>.fill{
+                &>.break{
                     background-color: $color-secondary;
                 }
             }

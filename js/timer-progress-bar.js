@@ -1,3 +1,5 @@
+/*eslint indent: ["error", "tab", { "SwitchCase": 1 }]*/
+
 /* PROGRESS BAR DESKTOP */
 
 const sequence = {
@@ -26,17 +28,59 @@ sequence.cicles.map((i) => {
 	}
 });
 
-const currentTimer = document.querySelector(".timer__progress-bar__current .pomodoro");
+const intervalBlocks = document.querySelectorAll(".timer__progress-bar__current div");
+let idx = 0;
+let currentTimer = intervalBlocks[idx];
 let w = 0;
 currentTimer.style.width = w + "%";
+let finalWidth = widths.pomodoroWidth;
 
-// setInterval(()=>{
-// 	currentTimer.style.width = w + "%";
-// 	w++;
-// 	console.log(currentTimer);
-// },1000);
+let t = setInterval(() => {
+	currentTimer.style.width = w + "%";
+	w++;
+	if (w >= finalWidth) {
+		nextInterval();
+	}
+}, 100);
+
+function nextInterval() {
+	if (idx >= sequence.cicles.length-1) {
+		clearInterval(t);
+	} else {
+		idx++;
+		if (sequence.cicles[idx] == 0) {
+			finalWidth = widths.pomodoroWidth;
+		} else if (sequence.cicles[idx] == 1) {
+			finalWidth = widths.shortBreakWidth;
+		} else if (sequence.cicles[idx] == 2) {
+			finalWidth = widths.longBreakWidth;
+		}
+		w = 0;
+		currentTimer = intervalBlocks[idx];
+	}
 
 
+}
+
+// let it = runSequence();
+// //starts the sequence
+// // it.next();
+
+// function* runSequence() {
+// 	sequence.cicles.map((i)=>{
+// 		switch (sequence.cicles[i]) {
+// 			case 0:
+// 				yield pomodoro.start(it);
+// 				break;
+// 			case 1:
+// 				yield shortBreak.start(it);
+// 				break;
+// 			case 2:
+// 				yield longBreak.start(it);
+// 				break;
+// 		}
+// 	});
+// }
 
 
 // Helper functions
