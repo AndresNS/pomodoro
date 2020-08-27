@@ -3,8 +3,8 @@
 export default class Timer {
 	constructor(initialMinutes, initialSeconds = 0) {
 		this.timerId = 0;
-		this.running = false;
-		this.done = false;
+		this.isRunning = false;
+		// this.isDone = false;
 		this.initialMinutes = initialMinutes;
 		this.initialSeconds = initialSeconds;
 		this.currentMinute = initialMinutes;
@@ -13,8 +13,9 @@ export default class Timer {
 
 	//Start Timer
 	start() {
-		this.running = true;
+		this.isRunning = true;
 		this.timerId = setInterval(() => {
+			console.log(`${this.currentMinute}:${this.currentSecond}`)
 
 			//Stops timer when done
 			if (this.currentMinute == 0 && this.currentSecond == 0) {
@@ -33,15 +34,24 @@ export default class Timer {
 	//Pause Timer
 	pause() {
 		clearInterval(this.timerId);
-		this.running = false;
+		this.isRunning = false;
 	}
 
 	//Reset Timer
 	reset() {
 		clearInterval(this.timerId);
-		this.running = false;
-		this.done = true;
-		this.currentMinute = this.initialMinutes;
-		this.currentSecond = this.initialSeconds;
+		this.isRunning = false;
+		// this.isDone = true;
+		this.setCurrentTime(this.initialMinutes,this.initialSeconds);
+	}
+
+	setInitialTime(mins, secs){
+		this.initialMinutes = mins;
+		this.initialSeconds = secs;
+	}
+
+	setCurrentTime(mins, secs){
+		this.currentMinute = mins;
+		this.currentSecond = secs;
 	}
 }

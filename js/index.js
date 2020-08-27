@@ -16,22 +16,32 @@ const session = new Session(sessionData.sequence, sessionData.pomMin, sessionDat
 
 // Get DOM elements
 const playButton = document.querySelector(".timer-controls__button.play");
-const pauseButton = document.querySelector(".timer-controls__button.pause");
+const stopButton = document.querySelector(".timer-controls__button.stop");
 const resetButton = document.querySelector(".timer-controls__button.reset");
 const timerDisplay = document.querySelector(".timer__display");
 updateTimerDisplay(timerDisplay, sessionData.pomMin, 0);
 
 //Button listeners
 playButton.addEventListener("click", function () {
-	timer.start();
+	if(this.classList.contains("play")){
+		session.startTimer();
+	}else{
+		session.pauseTimer();
+	}
+	this.classList.toggle("play");
+	this.classList.toggle("pause");
 });
 
-pauseButton.addEventListener("click", function () {
-	timer.pause();
+stopButton.addEventListener("click", function () {
+	session.resetTimer();
+	if(playButton.classList.contains("pause")){
+		playButton.classList.toggle("play");
+		playButton.classList.toggle("pause");
+	}
 });
 
 resetButton.addEventListener("click", function () {
-	timer.reset();
+	session.resetSession();
 });
 
 

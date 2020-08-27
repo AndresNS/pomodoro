@@ -1,12 +1,12 @@
 "use strict";
 /* PROGRESS BAR DESKTOP */
 
-// const sessionData = {
-// 	sequence: [0, 1, 0, 1, 0, 1, 0, 2],
-// 	pomMin: .1,
-// 	shortBreakMins: .05,
-// 	longBreakMins: .08
-// };
+const sessionData = {
+	sequence: [0, 1, 0, 1, 0, 1, 0, 2],
+	pomMin: .1,
+	shortBreakMins: .05,
+	longBreakMins: .08
+};
 
 
 const progressBarCurrent = document.querySelector(".timer__progress-bar__current");
