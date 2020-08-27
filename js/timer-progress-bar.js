@@ -1,11 +1,12 @@
+"use strict";
 /* PROGRESS BAR DESKTOP */
 
-const sequence = {
-	cicles: [0, 1, 0, 1, 0, 1, 0, 2],
-	pomMin: .1,
-	shortBreakMins: .05,
-	longBreakMins: .08
-};
+// const sessionData = {
+// 	sequence: [0, 1, 0, 1, 0, 1, 0, 2],
+// 	pomMin: .1,
+// 	shortBreakMins: .05,
+// 	longBreakMins: .08
+// };
 
 
 const progressBarCurrent = document.querySelector(".timer__progress-bar__current");
@@ -18,12 +19,12 @@ let timer = setInterval(() => {
 		nextInterval();
 	}
 
-	if (sequence.cicles[idx] == 0) {
-		barWidth += (100 / (sequence.pomMin * 60));
-	} else if (sequence.cicles[idx] == 1) {
-		barWidth += (100 / (sequence.shortBreakMins * 60));
-	} else if (sequence.cicles[idx] == 2) {
-		barWidth += (100 / (sequence.longBreakMins * 60));
+	if (sessionData.sequence[idx] == 0) {
+		barWidth += (100 / (sessionData.pomMin * 60));
+	} else if (sessionData.sequence[idx] == 1) {
+		barWidth += (100 / (sessionData.shortBreakMins * 60));
+	} else if (sessionData.sequence[idx] == 2) {
+		barWidth += (100 / (sessionData.longBreakMins * 60));
 	}
 
 	progressBarCurrent.style.width = barWidth + "%";
@@ -33,12 +34,12 @@ let timer = setInterval(() => {
 
 function nextInterval() {
 	idx += 1;
-	if (idx < sequence.cicles.length) {
+	if (idx < sessionData.sequence.length) {
 		barWidth = 0;
 		// click arrow
 		const nextIntervalArrow = document.querySelectorAll(".sequence-display__controls>a");
 		nextIntervalArrow[1].click();
-		if (sequence.cicles[idx] == 0) {
+		if (sessionData.sequence[idx] == 0) {
 			progressBarCurrent.classList.remove("break");
 			progressBarCurrent.classList.add("pomodoro");
 		} else {

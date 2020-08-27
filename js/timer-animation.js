@@ -1,3 +1,5 @@
+"use strict";
+
 const progress = document.querySelector(".progress");
 
 // let frame = 0;

@@ -1,3 +1,5 @@
+"use strict";
+
 const sequenceDisplayList = document.querySelector(".sequence-display__list");
 const sequenceDisplayControls = document.querySelectorAll(".sequence-display__controls>a");
 const currentListItem = sequenceDisplayList.firstElementChild;

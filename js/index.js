@@ -1,131 +1,69 @@
-"use strict";
 /*eslint indent: ["error", "tab", { "SwitchCase": 1 }]*/
+"use strict";
+import Session from "./session.js";
 
-//Default values
-let pomodoroMinutes = 2;
-let pomodoroSeconds = 10;
-let shortBreakMinutes = 2;
-let shortBreakSeconds = 15;
-let LongBreakMinutes = 2;
-let LongBreakSeconds = 10;
 
-// 0 = pomodoro, 1 = short break, 2 = long break
-let sequence = [0, 1, 0, 1, 0, 1, 0, 2];
+//GET DATA FROM SETTINGS
+const sessionData = {
+	// 0 = pomodoro, 1 = short break, 2 = long break
+	sequence: [0, 1, 0, 1, 0, 1, 0, 2],
+	pomMin: 1,
+	shortBreakMins: .5,
+	longBreakMins: .75
+};
 
-let pomodoro = new Timer(pomodoroMinutes, pomodoroSeconds);
-let shortBreak = new Timer(shortBreakMinutes, shortBreakSeconds);
-let longBreak = new Timer(LongBreakMinutes, LongBreakSeconds);
+const session = new Session(sessionData.sequence, sessionData.pomMin, sessionData.shortBreakMins, sessionData.longBreakMins);
 
 // Get DOM elements
-const timeDisplay = document.getElementById("timer");
-const startButton = document.getElementById("start");
-const pauseButton = document.getElementById("pause");
-const resetButton = document.getElementById("reset");
-const minInput = document.getElementById("min");
-const secInput = document.getElementById("sec");
-
-//Set initial value for inputs
-let initialMin = minInput.value;
-let initialSec = secInput.value;
-timeDisplay.textContent = `${formatNumber(initialMin)}:${formatNumber(initialSec)}`;
+const playButton = document.querySelector(".timer-controls__button.play");
+const pauseButton = document.querySelector(".timer-controls__button.pause");
+const resetButton = document.querySelector(".timer-controls__button.reset");
+const timerDisplay = document.querySelector(".timer__display");
+updateTimerDisplay(timerDisplay, sessionData.pomMin, 0);
 
 //Button listeners
-startButton.addEventListener("click", function () {
-	pomodoro.start();
+playButton.addEventListener("click", function () {
+	timer.start();
 });
 
 pauseButton.addEventListener("click", function () {
-	pomodoro.pause();
+	timer.pause();
 });
 
 resetButton.addEventListener("click", function () {
-	pomodoro.reset();
+	timer.reset();
 });
 
 
 
-
-
-// PROTOTYPE CHAIN
-
-function Timer(initialMinutes, initialSeconds) {
-	this.timerId = 0;
-	this.running = false;
-	this.done = false;
-	this.initialMinutes = initialMinutes;
-	this.initialSeconds = initialSeconds;
-	this.currentMinute = initialMinutes;
-	this.currentSecond = initialSeconds;
-}
-
-//Start Timer
-Timer.prototype.start = function (iterator) {
-	this.running = true;
-	this.timerId = setInterval(() => {
-		timeDisplay.textContent = `${formatNumber(this.currentMinute)}:${formatNumber(this.currentSecond)}`;
-		console.log(`${formatNumber(this.currentMinute)}:${formatNumber(this.currentSecond)}`);
-
-		//Stops timer when done
-		if (this.currentMinute == 0 && this.currentSecond == 0) {
-			this.reset();
-			iterator.next();
-		}
-
-		if (this.currentSecond == 0) {
-			this.currentMinute -= 1;
-			this.currentSecond = 59;
-		} else {
-			this.currentSecond--;
-		}
-	}, 1000);
-};
-
-//Pause Timer
-Timer.prototype.pause = function () {
-	clearInterval(this.timerId);
-	this.running = false;
-};
-
-//Reset Timer
-Timer.prototype.reset = function () {
-	clearInterval(this.timerId);
-	this.running = false;
-	this.done = true;
-	this.currentMinute = this.initialMinutes;
-	this.currentSecond = this.initialSeconds + 1;
-};
-
-
-
-
-
-
-
-
-let it = runSequence();
-//starts the sequence
+// const it = runSequence();
+// //starts the sequence
 // it.next();
 
-function* runSequence() {
-	for (let i = 0; i < sequence.length; i++) {
-		switch (sequence[i]) {
-			case 0:
-				yield pomodoro.start(it);
-				break;
-			case 1:
-				yield shortBreak.start(it);
-				break;
-			case 2:
-				yield longBreak.start(it);
-				break;
-		}
-	}
+// function* runSequence() {
+// 	for (let i = 0; i < sessionData.sequence.length; i++) {
+// 		switch (sessionData.sequence[i]) {
+// 			case 0:
+// 				yield pomodoro.start(it);
+// 				break;
+// 			case 1:
+// 				yield shortBreak.start(it);
+// 				break;
+// 			case 2:
+// 				yield longBreak.start(it);
+// 				break;
+// 		}
+// 	}
 
 
-}
+// }
 
 
 //Helper functions
 function formatNumber(num) {
 	return ("0" + num).slice(-2);
+}
+
+function updateTimerDisplay(element, mins, secs){
+	element.textContent = `${formatNumber(mins)}:${formatNumber(secs)}`;
 }
