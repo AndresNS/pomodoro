@@ -3,7 +3,7 @@
 import Timer from "./timer.js";
 
 export default class Session {
-	constructor(sequence, pomomodoroMinutes, shortBreakMinutes, longBreakMinutes) {
+	constructor(sequence, pomomodoroMinutes, shortBreakMinutes, longBreakMinutes, timerDisplay) {
 		//Singleton
 		if (Session.instance instanceof Session) {
 			return Session.instance;
@@ -13,15 +13,17 @@ export default class Session {
 		this.pomomodoroMinutes = pomomodoroMinutes;
 		this.shortBreakMinutes = shortBreakMinutes;
 		this.longBreakMinutes = longBreakMinutes;
-		this.timer = new Timer(pomomodoroMinutes);
+		this.timer = new Timer(timerDisplay, pomomodoroMinutes);
+		this.autostart = true;
 
-		Object.freeze(this);
 		Session.instance = this;
 	}
 
 	startTimer() {
 		if (!this.timer.isRunning) {
-			this.timer.start();
+			this.timer.start().then(() => {
+				this.nextBlock(this.autostart);
+			});
 		}
 	}
 
@@ -61,7 +63,7 @@ export default class Session {
 			}
 			this.timer.reset();
 			if (autostart) {
-				this.timer.start();
+				this.startTimer();
 			}
 		}
 	}
@@ -84,7 +86,7 @@ export default class Session {
 			}
 			this.timer.reset();
 			if (autostart) {
-				this.timer.start();
+				this.startTimer();
 			}
 		}
 	}
