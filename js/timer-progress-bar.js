@@ -6,7 +6,7 @@ import CircularProgressBar from "./CircularProgressBar.js";
 
 
 //Desktop Progress Bar
-const deskProgressBarElement = document.querySelector(".timer__progress-bar__current");
+const deskProgressBarElement = document.querySelector(".timer__progress-bar__current--desktop");
 
 const hProgressBar = new HorizontalProgressBar(deskProgressBarElement, sessionData.pomMin, sessionData.sequence);
 export default hProgressBar;

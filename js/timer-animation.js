@@ -1,6 +1,6 @@
 "use strict";
 
-const progress = document.querySelector(".progress");
+// const progress = document.querySelector(".progress");
 
 // let frame = 0;
 // setInterval(() => {

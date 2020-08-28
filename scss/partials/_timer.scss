@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
 
     &::before {
         content: "";
@@ -20,10 +20,16 @@
         align-items: center;
         justify-content: center;
 
-        &__current {
+        &__current--mobile {
             @include circular-progress-bar($color-primary);
             animation: progress linear 3s infinite;
             // animation: progress linear 1s infinite paused;
+        }
+
+        &__current--desktop {
+            position: absolute;
+            height: 100%;
+            display: none;
         }
 
         &__bg {
@@ -44,32 +50,39 @@
         // justify-content: center;
         // align-items: center;
         flex-direction: column-reverse;
+
         &::before {
             display: none;
         }
-    
+
         &__progress-bar {
             position: relative;
             width: 50%;
             height: .3em;
             // align-items: center;
             // justify-content: center;
-            
-            &__current {
+
+            &__current--mobile {
+                display: none;
+            }
+
+            &__current--desktop {
                 width: 100%;
                 border: none;
                 border-radius: 0;
                 animation: none;
                 display: flex;
-                transition: width 1s ease-in-out;
-                &.pomodoro{
+
+                // transition: width 1s ease-in-out;
+                &.pomodoro {
                     background-color: $color-primary;
                 }
-                &.break{
+
+                &.break {
                     background-color: $color-secondary;
                 }
             }
-            
+
             &__bg {
                 background-color: $color-gray-light;
                 border: none;
@@ -77,7 +90,7 @@
                 display: flex;
             }
         }
-    
+
         &__display {
             // font-size: $font-size-XL;
         }
