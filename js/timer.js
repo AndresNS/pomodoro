@@ -1,5 +1,6 @@
 "use strict";
 import {updateTimerDisplay} from "./helper-functions.js";
+import hProgressBar from "./timer-progress-bar.js";
 
 export default class Timer {
 	constructor(timerDisplay, initialMinutes, initialSeconds = 0) {
@@ -31,6 +32,8 @@ export default class Timer {
 					this.currentSecond -= 1;
 				}
 
+
+				hProgressBar.addProgress();
 				updateTimerDisplay(this.timerDisplay, this.currentMinute, this.currentSecond);
 			}, 100);
 		});

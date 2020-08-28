@@ -1,28 +1,14 @@
 "use strict";
 /* PROGRESS BAR DESKTOP */
 
-class ProgressBar {
-	constructor(maxValue) {
-		this.currentPercent = 0;
-		this.maxValue = maxValue;
-	}
-	addPercent() {
-		this.currentPercent += 1;
-	}
-
-	resetProgress() {
-		this.currentPercent = 0;
-	}
+import HorizontalProgressBar from "./HorizontalProgressBar.js";
 
 
-}
 
-class HorizontalProgressBar extends ProgressBar {
-	constructor(maxValue, width){
-		super(maxValue);
-		this.width = width;
-	}
-} 
+const deskProgressBarElement = document.querySelector(".timer__progress-bar__current");
+const maxWidth = document.querySelector(".timer__progress-bar__bg").getBoundingClientRect().width;
+const hProgressBar = new HorizontalProgressBar(deskProgressBarElement, maxWidth);
+export default hProgressBar;
 
 
 // const sessionData = {
@@ -32,7 +18,6 @@ class HorizontalProgressBar extends ProgressBar {
 // 	longBreakMins: .08
 // };
 
-// const progressBarCurrent = document.querySelector(".timer__progress-bar__current");
 // let barWidth = 0;
 // let currentBlock = 0;
 // progressBarCurrent.style.width = barWidth + "%";
