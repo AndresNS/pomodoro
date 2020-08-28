@@ -1,13 +1,14 @@
 "use strict";
 /* PROGRESS BAR DESKTOP */
-
+import sessionData from "./session-data.js";
 import HorizontalProgressBar from "./HorizontalProgressBar.js";
+import CircularProgressBar from "./CircularProgressBar.js";
 
 
-
+//Desktop Progress Bar
 const deskProgressBarElement = document.querySelector(".timer__progress-bar__current");
-const maxWidth = document.querySelector(".timer__progress-bar__bg").getBoundingClientRect().width;
-const hProgressBar = new HorizontalProgressBar(deskProgressBarElement, maxWidth);
+
+const hProgressBar = new HorizontalProgressBar(deskProgressBarElement, sessionData.pomMin, sessionData.sequence);
 export default hProgressBar;
 
 

@@ -1,6 +1,10 @@
 "use strict";
-import {updateTimerDisplay} from "./helper-functions.js";
-import hProgressBar from "./timer-progress-bar.js";
+import {
+	updateTimerDisplay
+} from "./helper-functions.js";
+import {
+	default as ProgressBar
+} from "./timer-progress-bar.js";
 
 export default class Timer {
 	constructor(timerDisplay, initialMinutes, initialSeconds = 0) {
@@ -11,6 +15,7 @@ export default class Timer {
 		this.initialSeconds = initialSeconds;
 		this.currentMinute = initialMinutes;
 		this.currentSecond = initialSeconds;
+		this.currentBlock = 0;
 	}
 
 	//Start Timer
@@ -18,10 +23,9 @@ export default class Timer {
 		return new Promise((resolve) => {
 			this.isRunning = true;
 			this.timerId = setInterval(() => {
-				
+
 				//Stops timer when done
 				if (this.currentMinute == 0 && this.currentSecond == 0) {
-					this.reset();
 					resolve();
 				}
 
@@ -32,10 +36,9 @@ export default class Timer {
 					this.currentSecond -= 1;
 				}
 
-
-				hProgressBar.addProgress();
+				ProgressBar.addProgress();
 				updateTimerDisplay(this.timerDisplay, this.currentMinute, this.currentSecond);
-			}, 100);
+			}, 50);
 		});
 	}
 
@@ -51,6 +54,9 @@ export default class Timer {
 		this.isRunning = false;
 		this.setCurrentTime(this.initialMinutes, this.initialSeconds);
 		updateTimerDisplay(this.timerDisplay, this.currentMinute, this.currentSecond);
+		ProgressBar.setTotalTime(this.initialMinutes);
+		ProgressBar.setIncrementValue();
+		ProgressBar.resetProgress(this.currentBlock);
 	}
 
 	setInitialTime(mins, secs) {

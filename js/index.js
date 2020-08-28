@@ -2,6 +2,7 @@
 "use strict";
 import Session from "./session.js";
 import {updateTimerDisplay} from "./helper-functions.js";
+import sessionData from "./session-data.js";
 
 // Get DOM elements
 const playButton = document.querySelector(".timer-controls__button.play");
@@ -9,15 +10,7 @@ const stopButton = document.querySelector(".timer-controls__button.stop");
 const resetButton = document.querySelector(".timer-controls__button.reset");
 const timerDisplay = document.querySelector(".timer__display");
 
-//GET DATA FROM SETTINGS
-const sessionData = {
-	// 0 = pomodoro, 1 = short break, 2 = long break
-	sequence: [0, 1, 0, 1, 0, 1, 0, 2],
-	pomMin: 2,
-	shortBreakMins: 1,
-	longBreakMins: 1
-};
-
+//Set initial time
 updateTimerDisplay(timerDisplay, sessionData.pomMin, 0);
 
 //Create Session

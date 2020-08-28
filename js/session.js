@@ -21,8 +21,11 @@ export default class Session {
 
 	startTimer() {
 		if (!this.timer.isRunning) {
+			this.timer.currentBlock = this.currentBlock;
 			this.timer.start().then(() => {
-				this.nextBlock(this.autostart);
+				if(this.currentBlock<this.sequence.length){
+					this.nextBlock(this.autostart);
+				}
 			});
 		}
 	}
@@ -39,8 +42,9 @@ export default class Session {
 
 	resetSession() {
 		this.timer.setInitialTime(this.pomomodoroMinutes, 0);
-		this.timer.reset();
+		this.resetTimer();
 		this.currentBlock = 0;
+		this.timer.currentBlock = 0;
 	}
 
 	nextBlock(autostart) {
@@ -49,17 +53,20 @@ export default class Session {
 			switch (this.sequence[this.currentBlock]) {
 				case 0:
 					this.timer.setInitialTime(this.pomomodoroMinutes, 0);
+					this.timer.currentBlock = this.sequence[this.currentBlock];
 					break;
 
 				case 1:
 					this.timer.setInitialTime(this.shortBreakMinutes, 0);
+					this.timer.currentBlock = this.sequence[this.currentBlock];
 					break;
 
 				case 2:
 					this.timer.setInitialTime(this.longBreakMinutes, 0);
+					this.timer.currentBlock = this.sequence[this.currentBlock];
 					break;
 			}
-			this.timer.reset();
+			this.resetTimer();
 			if (autostart) {
 				this.startTimer();
 			}
@@ -72,17 +79,20 @@ export default class Session {
 			switch (this.sequence[this.currentBlock]) {
 				case 0:
 					this.timer.setInitialTime(this.pomomodoroMinutes, 0);
+					this.timer.currentBlock = this.sequence[this.currentBlock];
 					break;
 
 				case 1:
 					this.timer.setInitialTime(this.shortBreakMinutes, 0);
+					this.timer.currentBlock = this.sequence[this.currentBlock];
 					break;
 
 				case 2:
 					this.timer.setInitialTime(this.longBreakMinutes, 0);
+					this.timer.currentBlock = this.sequence[this.currentBlock];
 					break;
 			}
-			this.timer.reset();
+			this.resetTimer();
 			if (autostart) {
 				this.startTimer();
 			}

@@ -599,7 +599,7 @@ body {
     border-radius: 0;
     animation: none;
     display: flex;
-    transition: width 1s ease-in;
+    /* transition: width 1s ease-in-out; */
   }
   .timer__progress-bar__current.pomodoro {
     background-color: #23BDDC;
