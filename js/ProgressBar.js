@@ -2,17 +2,12 @@
 
 export default class ProgressBar {
 	constructor(domElement, totalMins, initialBlock) {
-		//Singleton
-		if (ProgressBar.instance instanceof ProgressBar) {
-			return ProgressBar.instance;
-		}
 		this.domElement = domElement;
 		this.totalSeconds = totalMins * 60;
 		this.incrementValue = 100 / this.totalSeconds;
 		this.currentPercent = 0;
 		this.currentBlock = initialBlock;
 
-		ProgressBar.instance = this;
 	}
 	addProgress() {
 		this.currentPercent += this.incrementValue;

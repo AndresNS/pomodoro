@@ -23,8 +23,15 @@ export default class Session {
 		if (!this.timer.isRunning) {
 			this.timer.currentBlock = this.currentBlock;
 			this.timer.start().then(() => {
-				if(this.currentBlock<this.sequence.length){
+				this.currentBlock += 1;
+				if (this.currentBlock < this.sequence.length) {
 					this.nextBlock(this.autostart);
+				} else {
+					clearInterval(this.timer.timerId);
+					this.resetSession();
+					const playButton = document.querySelector(".timer-controls__button.pause");
+					playButton.classList.toggle("play");
+					playButton.classList.toggle("pause");
 				}
 			});
 		}
@@ -42,14 +49,14 @@ export default class Session {
 
 	resetSession() {
 		this.timer.setInitialTime(this.pomomodoroMinutes, 0);
-		this.resetTimer();
 		this.currentBlock = 0;
 		this.timer.currentBlock = 0;
+		this.resetTimer();
 	}
 
 	nextBlock(autostart) {
 		if (this.currentBlock < this.sequence.length) {
-			this.currentBlock += 1;
+
 			switch (this.sequence[this.currentBlock]) {
 				case 0:
 					this.timer.setInitialTime(this.pomomodoroMinutes, 0);
