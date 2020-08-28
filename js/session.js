@@ -38,11 +38,9 @@ export default class Session {
 	}
 
 	resetSession() {
-		if (this.timer.isRunning) {
-			this.timer.setInitialTime(this.pomomodoroMinutes, 0);
-			this.timer.reset();
-			this.currentBlock = 0;
-		}
+		this.timer.setInitialTime(this.pomomodoroMinutes, 0);
+		this.timer.reset();
+		this.currentBlock = 0;
 	}
 
 	nextBlock(autostart) {

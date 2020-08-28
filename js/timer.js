@@ -1,4 +1,5 @@
 "use strict";
+import {updateTimerDisplay} from "./helper-functions.js";
 
 export default class Timer {
 	constructor(timerDisplay, initialMinutes, initialSeconds = 0) {
@@ -17,7 +18,6 @@ export default class Timer {
 			this.isRunning = true;
 			this.timerId = setInterval(() => {
 				
-
 				//Stops timer when done
 				if (this.currentMinute == 0 && this.currentSecond == 0) {
 					this.reset();
@@ -30,8 +30,9 @@ export default class Timer {
 				} else {
 					this.currentSecond -= 1;
 				}
-				this.updateTimerDisplay(this.timerDisplay, this.currentMinute, this.currentSecond);
-			}, 300);
+
+				updateTimerDisplay(this.timerDisplay, this.currentMinute, this.currentSecond);
+			}, 100);
 		});
 	}
 
@@ -46,6 +47,7 @@ export default class Timer {
 		clearInterval(this.timerId);
 		this.isRunning = false;
 		this.setCurrentTime(this.initialMinutes, this.initialSeconds);
+		updateTimerDisplay(this.timerDisplay, this.currentMinute, this.currentSecond);
 	}
 
 	setInitialTime(mins, secs) {
@@ -56,10 +58,5 @@ export default class Timer {
 	setCurrentTime(mins, secs) {
 		this.currentMinute = mins;
 		this.currentSecond = secs;
-	}
-
-	updateTimerDisplay(element, mins, secs) {
-		//USE FUNCTION formatNumber()
-		element.textContent = `${("0" + mins).slice(-2)}:${("0" + secs).slice(-2)}`;
 	}
 }
