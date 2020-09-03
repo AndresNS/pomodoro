@@ -1,7 +1,10 @@
 /*eslint indent: ["error", "tab", { "SwitchCase": 1 }]*/
 "use strict";
 import Session from "./modules/session.js";
-import {updateTimerDisplay, addElement} from "./modules/helper-functions.js";
+import {
+	updateTimerDisplay,
+	addElement
+} from "./modules/helper-functions.js";
 import sessionData from "./modules/session-data.js";
 
 // Get DOM elements
@@ -16,38 +19,10 @@ updateTimerDisplay(timerDisplay, sessionData.pomMin, 0);
 //Create Session
 const session = new Session(sessionData.sequence, sessionData.pomMin, sessionData.shortBreakMins, sessionData.longBreakMins, timerDisplay);
 
-
-//Button listeners
-playButton.addEventListener("click", function () {
-	if(this.classList.contains("play")){
-		session.startTimer();
-	}else{
-		session.pauseTimer();
-	}
-	this.classList.toggle("play");
-	this.classList.toggle("pause");
-});
-
-stopButton.addEventListener("click", function () {
-	session.resetTimer();
-	if(playButton.classList.contains("pause")){
-		playButton.classList.toggle("play");
-		playButton.classList.toggle("pause");
-	}
-});
-
-resetButton.addEventListener("click", function () {
-	session.resetSession();
-	if(playButton.classList.contains("pause")){
-		playButton.classList.toggle("play");
-		playButton.classList.toggle("pause");
-	}
-});
-
 //Timer sequence display
 const sequenceDisplayList = document.querySelector(".sequence-display__list");
 //Load list from settings
-sessionData.sequence.forEach((block)=>{
+sessionData.sequence.forEach((block) => {
 	switch (block) {
 		case 0:
 			addElement("Focus", "li", sequenceDisplayList);
@@ -66,7 +41,7 @@ const currentListItem = sequenceDisplayList.firstElementChild;
 let listItemWidth = currentListItem.offsetWidth;
 let listItemTranslateValue = 0;
 let currentIndex = session.currentBlock;
-const maxIndex = session.sequence.length-1;
+const maxIndex = session.sequence.length - 1;
 
 window.onresize = function () {
 	listItemWidth = currentListItem.offsetWidth;
@@ -79,12 +54,47 @@ sequenceDisplayControls.forEach((item) => {
 			listItemTranslateValue = listItemTranslateValue + listItemWidth;
 			sequenceDisplayList.style.transform = "translateX(" + listItemTranslateValue + "px)";
 			currentIndex -= 1;
-			session.previousBlock(true);
+			session.previousBlock();
 		} else if (item.classList.contains("right") && currentIndex < maxIndex) {
-			listItemTranslateValue = listItemTranslateValue + (- listItemWidth);
+			listItemTranslateValue = listItemTranslateValue + (-listItemWidth);
 			sequenceDisplayList.style.transform = "translateX(" + listItemTranslateValue + "px)";
 			currentIndex += 1;
-			session.nextBlock(true);
+			if (session.autostart && !session.timer.isRunning) {
+				playButton.classList.toggle("play");
+				playButton.classList.toggle("pause");
+			}
+			session.nextBlock();
 		}
 	});
+});
+
+
+//Button listeners
+playButton.addEventListener("click", function () {
+	if (this.classList.contains("play")) {
+		session.startTimer();
+	} else {
+		session.pauseTimer();
+	}
+	this.classList.toggle("play");
+	this.classList.toggle("pause");
+});
+
+stopButton.addEventListener("click", function () {
+	session.resetTimer();
+	if (playButton.classList.contains("pause")) {
+		playButton.classList.toggle("play");
+		playButton.classList.toggle("pause");
+	}
+});
+
+resetButton.addEventListener("click", function () {
+	session.resetSession();
+	if (playButton.classList.contains("pause")) {
+		playButton.classList.toggle("play");
+		playButton.classList.toggle("pause");
+	}
+	sequenceDisplayList.style.transform = "translateX(0px)";
+	listItemTranslateValue = 0;
+	currentIndex = session.currentBlock;
 });

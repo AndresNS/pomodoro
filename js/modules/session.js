@@ -53,7 +53,7 @@ export default class Session {
 		this.resetTimer();
 	}
 
-	nextBlock(autostart) {
+	nextBlock() {
 		if (this.currentBlock + 1 < this.sequence.length) {
 			this.currentBlock += 1;
 			switch (this.sequence[this.currentBlock]) {
@@ -73,13 +73,13 @@ export default class Session {
 					break;
 			}
 			this.resetTimer();
-			if (autostart) {
+			if (this.autostart) {
 				this.startTimer();
 			}
 		}
 	}
 
-	previousBlock(autostart) {
+	previousBlock() {
 		if (this.currentBlock > 0) {
 			this.currentBlock -= 1;
 			switch (this.sequence[this.currentBlock]) {
@@ -99,7 +99,7 @@ export default class Session {
 					break;
 			}
 			this.resetTimer();
-			if (autostart) {
+			if (this.autostart) {
 				this.startTimer();
 			}
 		}
