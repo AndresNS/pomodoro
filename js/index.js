@@ -54,12 +54,16 @@ sequenceDisplayControls.forEach((item) => {
 			listItemTranslateValue = listItemTranslateValue + listItemWidth;
 			sequenceDisplayList.style.transform = "translateX(" + listItemTranslateValue + "px)";
 			currentIndex -= 1;
+			if ((session.autostart && !session.timer.isRunning) || (!session.autostart && session.timer.isRunning)) {
+				playButton.classList.toggle("play");
+				playButton.classList.toggle("pause");
+			}
 			session.previousBlock();
 		} else if (item.classList.contains("right") && currentIndex < maxIndex) {
 			listItemTranslateValue = listItemTranslateValue + (-listItemWidth);
 			sequenceDisplayList.style.transform = "translateX(" + listItemTranslateValue + "px)";
 			currentIndex += 1;
-			if (session.autostart && !session.timer.isRunning) {
+			if ((session.autostart && !session.timer.isRunning) || (!session.autostart && session.timer.isRunning)) {
 				playButton.classList.toggle("play");
 				playButton.classList.toggle("pause");
 			}
