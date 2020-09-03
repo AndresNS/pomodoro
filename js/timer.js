@@ -36,9 +36,10 @@ export default class Timer {
 					this.currentSecond -= 1;
 				}
 
-				ProgressBar.addProgress();
+				ProgressBar.hProgressBar.addProgress();
+				ProgressBar.mProgressBar.addProgress();
 				updateTimerDisplay(this.timerDisplay, this.currentMinute, this.currentSecond);
-			}, 50);
+			}, 1000);
 		});
 	}
 
@@ -54,9 +55,12 @@ export default class Timer {
 		this.isRunning = false;
 		this.setCurrentTime(this.initialMinutes, this.initialSeconds);
 		updateTimerDisplay(this.timerDisplay, this.currentMinute, this.currentSecond);
-		ProgressBar.setTotalTime(this.initialMinutes);
-		ProgressBar.setIncrementValue();
-		ProgressBar.resetProgress(this.currentBlock);
+		ProgressBar.hProgressBar.setTotalTime(this.initialMinutes);
+		ProgressBar.mProgressBar.setTotalTime(this.initialMinutes);
+		ProgressBar.hProgressBar.setIncrementValue();
+		ProgressBar.mProgressBar.setIncrementValue();
+		ProgressBar.hProgressBar.resetProgress(this.currentBlock);
+		ProgressBar.mProgressBar.resetProgress(this.currentBlock);
 	}
 
 	setInitialTime(mins, secs) {

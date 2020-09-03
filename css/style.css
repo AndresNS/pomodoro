@@ -568,7 +568,13 @@ body {
   height: 100%;
   border: 0.5em solid #23BDDC;
   border-radius: 50%;
-  animation: progress linear 3s infinite;
+  animation: progress linear 1s infinite paused;
+}
+.timer__progress-bar__current--mobile.pomodoro {
+  border: 0.5em solid #23BDDC;
+}
+.timer__progress-bar__current--mobile.break {
+  border: 0.5em solid #FF952C;
 }
 .timer__progress-bar__current--desktop {
   position: absolute;

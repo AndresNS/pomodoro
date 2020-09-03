@@ -22,8 +22,15 @@
 
         &__current--mobile {
             @include circular-progress-bar($color-primary);
-            animation: progress linear 3s infinite;
-            // animation: progress linear 1s infinite paused;
+            // animation: progress linear 3s infinite;
+            animation: progress linear 1s infinite paused;
+            &.pomodoro {
+                border: 0.5em solid $color-primary;
+            }
+
+            &.break {
+                border: 0.5em solid $color-secondary;
+            }
         }
 
         &__current--desktop {

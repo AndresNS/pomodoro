@@ -1,9 +1,9 @@
-"use strict";
+// "use strict";
 
-// const progress = document.querySelector(".progress");
+// const progress = document.querySelector(".timer__progress-bar__current--mobile");
 
 // let frame = 0;
 // setInterval(() => {
 // 	progress.style.animationDelay = `-${frame}s`;
-// 	frame += 0.0005;
-// }, 50);
+// 	frame += 1.6;
+// }, 1000);
