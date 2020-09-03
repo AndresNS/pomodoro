@@ -39,7 +39,7 @@ export default class Timer {
 				ProgressBar.hProgressBar.addProgress();
 				ProgressBar.mProgressBar.addProgress();
 				updateTimerDisplay(this.timerDisplay, this.currentMinute, this.currentSecond);
-			}, 1000);
+			}, 100);
 		});
 	}
 

@@ -23,8 +23,7 @@ export default class Session {
 		if (!this.timer.isRunning) {
 			this.timer.currentBlock = this.currentBlock;
 			this.timer.start().then(() => {
-				this.currentBlock += 1;
-				if (this.currentBlock < this.sequence.length) {
+				if (this.currentBlock + 1 < this.sequence.length) {
 					this.nextBlock(this.autostart);
 				} else {
 					clearInterval(this.timer.timerId);
@@ -55,8 +54,8 @@ export default class Session {
 	}
 
 	nextBlock(autostart) {
-		if (this.currentBlock < this.sequence.length) {
-
+		if (this.currentBlock + 1 < this.sequence.length) {
+			this.currentBlock += 1;
 			switch (this.sequence[this.currentBlock]) {
 				case 0:
 					this.timer.setInitialTime(this.pomomodoroMinutes, 0);

@@ -13,7 +13,6 @@ export default class CircularProgressBar extends ProgressBar {
 	addProgress() {
 		super.addProgress();
 		this.setElementStyle();
-		console.log(this.incrementValue);
 	}
 
 	resetProgress(currentBlock) {

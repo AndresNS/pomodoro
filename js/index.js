@@ -1,8 +1,8 @@
 /*eslint indent: ["error", "tab", { "SwitchCase": 1 }]*/
 "use strict";
-import Session from "./session.js";
-import {updateTimerDisplay} from "./helper-functions.js";
-import sessionData from "./session-data.js";
+import Session from "./modules/session.js";
+import {updateTimerDisplay, addElement} from "./modules/helper-functions.js";
+import sessionData from "./modules/session-data.js";
 
 // Get DOM elements
 const playButton = document.querySelector(".timer-controls__button.play");
@@ -42,4 +42,49 @@ resetButton.addEventListener("click", function () {
 		playButton.classList.toggle("play");
 		playButton.classList.toggle("pause");
 	}
+});
+
+//Timer sequence display
+const sequenceDisplayList = document.querySelector(".sequence-display__list");
+//Load list from settings
+sessionData.sequence.forEach((block)=>{
+	switch (block) {
+		case 0:
+			addElement("Focus", "li", sequenceDisplayList);
+			break;
+		case 1:
+			addElement("Break", "li", sequenceDisplayList);
+			break;
+		case 2:
+			addElement("Long Break", "li", sequenceDisplayList);
+			break;
+	}
+});
+
+const sequenceDisplayControls = document.querySelectorAll(".sequence-display__controls>a");
+const currentListItem = sequenceDisplayList.firstElementChild;
+let listItemWidth = currentListItem.offsetWidth;
+let listItemTranslateValue = 0;
+let currentIndex = session.currentBlock;
+const maxIndex = session.sequence.length-1;
+
+window.onresize = function () {
+	listItemWidth = currentListItem.offsetWidth;
+};
+
+sequenceDisplayControls.forEach((item) => {
+	item.addEventListener("click", (e) => {
+		e.preventDefault();
+		if (item.classList.contains("left") && currentIndex > 0) {
+			listItemTranslateValue = listItemTranslateValue + listItemWidth;
+			sequenceDisplayList.style.transform = "translateX(" + listItemTranslateValue + "px)";
+			currentIndex -= 1;
+			session.previousBlock(true);
+		} else if (item.classList.contains("right") && currentIndex < maxIndex) {
+			listItemTranslateValue = listItemTranslateValue + (- listItemWidth);
+			sequenceDisplayList.style.transform = "translateX(" + listItemTranslateValue + "px)";
+			currentIndex += 1;
+			session.nextBlock(true);
+		}
+	});
 });
