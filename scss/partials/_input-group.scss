@@ -1,24 +1,80 @@
 .input-group {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 
-    &__label { 
+    &__number {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        input {
+            max-width: 20%;
+            border: 2px solid $color-gray-light;
+            border-radius: 3px;
+            padding: .6em 1em;
+            text-align: center;
+        }
+
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            margin: 0;
+        }
     }
 
-    &__field {
-        max-width: 20%;
-        border: 2px solid $color-gray-light;
-        border-radius: 3px;
-        padding: .6em 1em;
-        text-align: center;
-    }
+    &__checkbox {
+        display: block;
+        position: relative;
+        padding-left: 2em;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
 
-    input[type=number]::-webkit-inner-spin-button,
-    input[type=number]::-webkit-outer-spin-button {
-        -moz-appearance: none;
-        -webkit-appearance: none;
-        margin: 0;
+        input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+
+            &:checked~.checkmark {
+                background-color: $color-primary;
+                border-color: $color-primary;
+                &:after {
+                    display: block;
+                }
+            }
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 1.2em;
+            width: 1.2em;
+            background-color: white;
+            border-radius: 2px;
+            border: 2px solid $color-gray;
+
+            &:after {
+                left: .35em;
+                width: .4em;
+                height: .8em;
+                border: solid white;
+                border-width: 0 2px 2px 0;
+                -webkit-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                transform: rotate(45deg);
+                content: "";
+                position: absolute;
+                display: none;
+            }
+        }
+
+        &:hover input~.checkmark {
+            border-color: $color-primary;
+        }
     }
 }

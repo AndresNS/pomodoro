@@ -41,20 +41,26 @@
             <hr class="settings-section__separator">
             <div class="settings-section__row">
                 <div class="input-group">
-                    <label class="input-group__label" for="pomodoro-min">Pomodoro</label>
-                    <input class="input-group__field" type="number" id="pomodoro-min" min="1" value="25">
+                    <div class="input-group__number">
+                        <label for="pomodoro-min">Pomodoro</label>
+                        <input type="number" id="pomodoro-min" min="1" value="25">
+                    </div>
                 </div>
             </div>
             <div class="settings-section__row">
                 <div class="input-group">
-                    <label class="input-group__label" for="short-break-min">Short Break</label>
-                    <input class="input-group__field" type="number" id="short-break-min" min="1" value="5">
+                    <div class="input-group__number">
+                        <label for="short-break-min">Short Break</label>
+                        <input type="number" id="short-break-min" min="1" value="5">
+                    </div>
                 </div>
             </div>
             <div class="settings-section__row">
                 <div class="input-group">
-                    <label class="input-group__label" for="long-break-min">Long Break</label>
-                    <input class="input-group__field" type="number" id="long-break-min" min="1" value="10">
+                    <div class="input-group__number">
+                        <label for="long-break-min">Long Break</label>
+                        <input type="number" id="long-break-min" min="1" value="10">
+                    </div>
                 </div>
             </div>
         </div>
@@ -71,7 +77,15 @@
         <div class="settings-section">
             <h2 class="settings-section__title">Autostart</h2>
             <hr class="settings-section__separator">
-            <div class="settings-section__row"></div>
+            <div class="settings-section__row">
+                <div class="input-group">
+                    <label class="input-group__checkbox">
+                        Automatically start next timer when the current one ends.
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
         </div>
 
         <!-- Alarm sound -->
