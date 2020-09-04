@@ -16,6 +16,7 @@ export default class Timer {
 		this.currentMinute = initialMinutes;
 		this.currentSecond = initialSeconds;
 		this.currentBlock = 0;
+		this.alarmSound = new Audio("../../src/sounds/piano.mp3");
 	}
 
 	//Start Timer
@@ -26,6 +27,7 @@ export default class Timer {
 
 				//Stops timer when done
 				if (this.currentMinute == 0 && this.currentSecond == 0) {
+					this.alarmSound.play();
 					resolve();
 				}
 
