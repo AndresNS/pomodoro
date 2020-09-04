@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+
+    <!-- CSS STYLES -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header__logo">
+            <a href="index.html">POMODORO</a>
+        </div>
+        <div class="header__hamburger">
+            <a href="#"><img src="img/icon-hamburger.svg" alt="open menu"></a>
+        </div>
+        <div class="header__nav">
+            <ul class="menu">
+                <li class="menu__item"><a href="index.html">Home</a></li>
+                <li class="menu__item"><a href="#what-is-pomodoro">What is Pomodoro?</a></li>
+                <li class="menu__item"><a href="settings.html">Settings</a></li>
+                <li class="menu__item"><a href="#about">About</a></li>
+            </ul>
+        </div>
+        <div class="header__close">
+            <a href="#"><img src="img/icon-close.svg" alt="open menu"></a>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <div class="main main-offset-top">
+
+        <!-- Custom times -->
+        <div class="settings-section">
+            <h2 class="settings-section__title">Custom times</h2>
+            <hr class="settings-section__separator">
+            <div class="settings-section__row">
+                <div class="input-group">
+                    <label class="input-group__label" for="pomodoro-min">Pomodoro</label>
+                    <input class="input-group__field" type="number" id="pomodoro-min" min="1" value="25">
+                </div>
+            </div>
+            <div class="settings-section__row">
+                <div class="input-group">
+                    <label class="input-group__label" for="short-break-min">Short Break</label>
+                    <input class="input-group__field" type="number" id="short-break-min" min="1" value="5">
+                </div>
+            </div>
+            <div class="settings-section__row">
+                <div class="input-group">
+                    <label class="input-group__label" for="long-break-min">Long Break</label>
+                    <input class="input-group__field" type="number" id="long-break-min" min="1" value="10">
+                </div>
+            </div>
+        </div>
+
+        <!-- Custom sequence -->
+        <div class="settings-section">
+            <h2 class="settings-section__title">Custom sequence</h2>
+            <hr class="settings-section__separator">
+            <div class="settings-section__row"></div>
+            <div class="settings-section__row"></div>
+        </div>
+
+        <!-- Autostart -->
+        <div class="settings-section">
+            <h2 class="settings-section__title">Autostart</h2>
+            <hr class="settings-section__separator">
+            <div class="settings-section__row"></div>
+        </div>
+
+        <!-- Alarm sound -->
+        <div class="settings-section">
+            <h2 class="settings-section__title">Alarm sound</h2>
+            <hr class="settings-section__separator">
+            <div class="settings-section__row"></div>
+            <div class="settings-section__row"></div>
+        </div>
+
+        <!-- Alarm volume -->
+        <div class="settings-section">
+            <h2 class="settings-section__title">Alarm volume</h2>
+            <hr class="settings-section__separator">
+            <div class="settings-section__row"></div>
+            <div class="settings-section__row"></div>
+        </div>
+
+        <!-- Buttons -->
+
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>Developed by Andr&eacute;s Navarro S.</footer>
+
+    <!-- SCRIPTS -->
+    <script type="module" src="js/index.js"></script>
+    <script src="js/nav.js"></script>
+</body>
+
+</html>

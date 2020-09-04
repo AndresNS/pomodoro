@@ -5,6 +5,7 @@
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap");
 html {
   line-height: 1.15;
   /* 1 */
@@ -367,7 +368,7 @@ template {
 body {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  font-family: Montserrat, Arial, sans-serif;
 }
 
 .main {
@@ -698,6 +699,45 @@ body {
 }
 .timer-controls__button:hover {
   transform: scale(1.2);
+}
+
+.settings-section {
+  width: 100%;
+  margin-bottom: 2em;
+}
+.settings-section__title {
+  margin: 0 0 0.6em;
+  color: #5B5B5B;
+  font-weight: 500;
+}
+.settings-section__separator {
+  border: none;
+  background-color: #B7B7B7;
+  height: 1px;
+  margin: 0 0 1.5em;
+}
+.settings-section__row {
+  margin: 1em 0;
+}
+
+.input-group {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.input-group__field {
+  max-width: 20%;
+  border: 2px solid #EFEFEF;
+  border-radius: 3px;
+  padding: 0.6em 1em;
+  text-align: center;
+}
+.input-group input[type=number]::-webkit-inner-spin-button,
+.input-group input[type=number]::-webkit-outer-spin-button {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /*# sourceMappingURL=style.css.map */

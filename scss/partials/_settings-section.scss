@@ -1,0 +1,21 @@
+.settings-section {
+    width: 100%;
+    margin-bottom: $section-margin;
+
+    &__title {
+        margin: 0 0 .6em;
+        color: $color-gray-dark;
+        font-weight: 500;
+    }
+
+    &__separator {
+        border: none;
+        background-color: $color-gray;
+        height: 1px;
+        margin: 0 0 1.5em;
+    }
+
+    &__row {
+        margin: 1em 0;
+    }
+}
