@@ -3,10 +3,26 @@
     border-radius: 3px;
     padding: .6em 1em;
     cursor: pointer;
-    display: block;
     font-weight: 500;
+    width: 100%;
+
+    &-container {
+        width: 50%;
+    }
+    
     &--primary {
         background-color: $color-primary;
         color: #fff;
+        &:hover{
+            background-color: lighten($color-primary, 10%);
+        }
+    }
+
+    &--secondary {
+        background-color: $color-secondary;
+        color: #fff;
+        &:hover{
+            background-color: lighten($color-secondary, 10%);
+        }
     }
 }

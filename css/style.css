@@ -724,6 +724,8 @@ body {
 }
 .settings-section__row {
   margin: 1em 0;
+  display: flex;
+  justify-content: center;
 }
 
 .input-group {
@@ -794,6 +796,9 @@ body {
 .input-group__checkbox:hover input ~ .checkmark {
   border-color: #23BDDC;
 }
+.input-group__dropdown {
+  width: 100%;
+}
 .input-group__dropdown .dropdown-arrow {
   position: relative;
 }
@@ -825,12 +830,25 @@ body {
   border-radius: 3px;
   padding: 0.6em 1em;
   cursor: pointer;
-  display: block;
   font-weight: 500;
+  width: 100%;
+}
+.button-container {
+  width: 50%;
 }
 .button--primary {
   background-color: #23BDDC;
   color: #fff;
+}
+.button--primary:hover {
+  background-color: #4fcae3;
+}
+.button--secondary {
+  background-color: #FF952C;
+  color: #fff;
+}
+.button--secondary:hover {
+  background-color: #ffaf5f;
 }
 
 /*# sourceMappingURL=style.css.map */
