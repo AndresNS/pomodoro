@@ -10,13 +10,13 @@
             @extend %input-base;
             max-width: 20%;
             text-align: center;
-        }
-
-        input[type=number]::-webkit-inner-spin-button,
-        input[type=number]::-webkit-outer-spin-button {
-            -moz-appearance: none;
-            -webkit-appearance: none;
-            margin: 0;
+            appearance: textfield;
+            &[type=number]::-webkit-inner-spin-button,
+            &[type=number]::-webkit-outer-spin-button {
+                -moz-appearance: none;
+                -webkit-appearance: none;
+                margin: 0;
+            }
         }
     }
 

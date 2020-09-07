@@ -739,9 +739,9 @@ body {
 .input-group__number input {
   max-width: 20%;
   text-align: center;
+  appearance: textfield;
 }
-.input-group__number input[type=number]::-webkit-inner-spin-button,
-.input-group__number input[type=number]::-webkit-outer-spin-button {
+.input-group__number input[type=number]::-webkit-inner-spin-button, .input-group__number input[type=number]::-webkit-outer-spin-button {
   -moz-appearance: none;
   -webkit-appearance: none;
   margin: 0;
@@ -849,6 +849,94 @@ body {
 }
 .button--secondary:hover {
   background-color: #ffaf5f;
+}
+
+.volume-control {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.volume-control__icon {
+  display: flex;
+  align-items: center;
+  margin-right: 1em;
+}
+.volume-control__slider {
+  width: 100%;
+}
+.volume-control__slider input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  background: transparent;
+}
+.volume-control__slider input[type=range]:focus {
+  outline: none;
+}
+.volume-control__slider input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+.volume-control__slider input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 1em;
+  width: 1em;
+  border-radius: 50%;
+  background: #23BDDC;
+  cursor: pointer;
+  margin-top: -0.4em;
+}
+.volume-control__slider input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  background: #B7B7B7;
+}
+.volume-control__slider input[type=range]::-moz-range-thumb {
+  height: 1em;
+  width: 1em;
+  border: none;
+  border-radius: 50%;
+  background: #23BDDC;
+  cursor: pointer;
+}
+.volume-control__slider input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  background: #B7B7B7;
+}
+.volume-control__slider input[type=range]::-moz-range-progress {
+  background: #23BDDC;
+}
+.volume-control__slider input[type=range]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+.volume-control__slider input[type=range]::-ms-thumb {
+  height: 1em;
+  width: 1em;
+  border-radius: 50%;
+  background: #23BDDC;
+  cursor: pointer;
+}
+.volume-control__slider input[type=range]::-ms-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+.volume-control__slider input[type=range]::-ms-fill-lower {
+  background: #23BDDC;
+}
+.volume-control__slider input[type=range]:focus::-ms-fill-lower {
+  background: #23BDDC;
+}
+.volume-control__slider input[type=range]::-ms-fill-upper {
+  background: #B7B7B7;
 }
 
 /*# sourceMappingURL=style.css.map */
