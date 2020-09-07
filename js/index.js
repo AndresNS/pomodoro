@@ -7,6 +7,7 @@ import {
 } from "./modules/helper-functions.js";
 import sessionData from "./modules/session-data.js";
 
+
 // Get DOM elements
 const playButton = document.querySelector(".timer-controls__button.play");
 const stopButton = document.querySelector(".timer-controls__button.stop");
