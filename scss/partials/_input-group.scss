@@ -7,10 +7,8 @@
         justify-content: space-between;
 
         input {
+            @extend %input-base;
             max-width: 20%;
-            border: 2px solid $color-gray-light;
-            border-radius: 3px;
-            padding: .6em 1em;
             text-align: center;
         }
 
@@ -42,6 +40,7 @@
             &:checked~.checkmark {
                 background-color: $color-primary;
                 border-color: $color-primary;
+
                 &:after {
                     display: block;
                 }
@@ -75,6 +74,38 @@
 
         &:hover input~.checkmark {
             border-color: $color-primary;
+        }
+    }
+
+    &__dropdown {
+        .dropdown-arrow {
+            position: relative;
+
+            select {
+                @extend %input-base;
+                appearance: none;
+                width: 100%;
+                background-color: transparent;
+
+                &::-ms-expand {
+                    display: none;
+                }
+            }
+
+            &::after {
+                content: "";
+                right: 1em;
+                top: .8em;
+                position: absolute;
+                width: .6em;
+                height: .6em;
+                border: solid $color-primary;
+                border-width: 0 3px 3px 0;
+                -webkit-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                transform: rotate(45deg);
+                z-index: map-get($z-index, behind-elements);
+            }
         }
     }
 }
