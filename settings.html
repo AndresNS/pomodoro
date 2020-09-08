@@ -70,7 +70,11 @@
             <h2 class="settings-section__title">Custom sequence</h2>
             <hr class="settings-section__separator">
             <div class="settings-section__row"></div>
-            <div class="settings-section__row"></div>
+            <div class="settings-section__row">
+                <div class="button-container-50">
+                    <button type="button" class="button button--primary">New block</button>
+                </div>
+            </div>
         </div>
 
         <!-- Autostart -->
@@ -103,7 +107,7 @@
                 </div>
             </div>
             <div class="settings-section__row">
-                <div class="button-container">
+                <div class="button-container-50">
                     <button type="button" class="button button--primary">Test sound</button>
                 </div>
             </div>
@@ -119,7 +123,7 @@
                         <img src="img/icon-audio.svg" alt="open menu">
                     </div>
                     <div class="volume-control__slider">
-                        <input id="myinput" type="range" min="1" max="100" value="50">
+                        <input class="slider" type="range" min="1" max="100" value="80">
                     </div>
                 </div>
             </div>
@@ -127,15 +131,23 @@
         </div>
 
         <!-- Buttons -->
-
-
+        <div class="settings-section">
+            <div class="settings-section__row settings-section__row--space-between">
+                <div class="button-container-45">
+                    <button type="button" class="button button--primary">Defaults</button>
+                </div>
+                <div class="button-container-45">
+                    <button type="button" class="button button--secondary">Save</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- FOOTER -->
     <footer>Developed by Andr&eacute;s Navarro S.</footer>
 
     <!-- SCRIPTS -->
-    <script src="js/test.js"></script>
+    <script src="js/volume-control.js"></script>
     <script type="module" src="js/index.js"></script>
     <script src="js/nav.js"></script>
 </body>

@@ -727,6 +727,9 @@ body {
   display: flex;
   justify-content: center;
 }
+.settings-section__row--space-between {
+  justify-content: space-between;
+}
 
 .input-group {
   width: 100%;
@@ -833,7 +836,10 @@ body {
   font-weight: 500;
   width: 100%;
 }
-.button-container {
+.button-container-45 {
+  width: 45%;
+}
+.button-container-50 {
   width: 50%;
 }
 .button--primary {
@@ -867,11 +873,63 @@ body {
   align-items: center;
 }
 .volume-control__slider input[type=range] {
-  background: linear-gradient(to right, #82cfd0 0%, #82cfd0 50%, #B7B7B7 50%, #B7B7B7 100%);
-  height: 7px;
+  background: linear-gradient(to right, #23BDDC 0%, #23BDDC 50%, #B7B7B7 50%, #B7B7B7 100%);
+  height: 4px;
   width: 100%;
   outline: none;
   -webkit-appearance: none;
+}
+.volume-control__slider input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #23BDDC;
+  cursor: pointer;
+}
+.volume-control__slider input[type=range]::-webkit-slider-runnable-track {
+  cursor: pointer;
+}
+.volume-control__slider input[type=range]::-moz-range-thumb {
+  height: 16px;
+  width: 16px;
+  border: none;
+  border-radius: 50%;
+  background: #23BDDC;
+  cursor: pointer;
+}
+.volume-control__slider input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  background: #B7B7B7;
+}
+.volume-control__slider input[type=range]::-moz-range-progress {
+  background: #23BDDC;
+}
+.volume-control__slider input[type=range]::-ms-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+.volume-control__slider input[type=range]::-ms-thumb {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #23BDDC;
+  cursor: pointer;
+}
+.volume-control__slider input[type=range]::-ms-fill-lower {
+  background: #23BDDC;
+}
+.volume-control__slider input[type=range]:focus::-ms-fill-lower {
+  background: #23BDDC;
+}
+.volume-control__slider input[type=range]::-ms-fill-upper {
+  background: #B7B7B7;
 }
 
 /*# sourceMappingURL=style.css.map */
