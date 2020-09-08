@@ -384,15 +384,15 @@ body {
 
 @media (min-width: 1024px) {
   .main {
-    margin-top: 4em;
+    margin-top: 6em;
   }
 }
 .section-spacing-top {
-  margin-top: 2em;
+  margin-top: 3em;
 }
 
 .section-spacing-bottom {
-  margin-bottom: 2em;
+  margin-bottom: 3em;
 }
 
 .header {
@@ -709,7 +709,7 @@ body {
 
 .settings-section {
   width: 100%;
-  margin-bottom: 2em;
+  margin-bottom: 3em;
 }
 .settings-section__title {
   margin: 0 0 0.6em;
@@ -930,6 +930,51 @@ body {
 }
 .volume-control__slider input[type=range]::-ms-fill-upper {
   background: #B7B7B7;
+}
+
+.sequence-manager {
+  width: 100%;
+  padding: 0.5em;
+  border: 1px solid #EFEFEF;
+  border-radius: 3px;
+}
+.sequence-manager__block {
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  padding: 0.5em 0.8em;
+  cursor: move;
+}
+.sequence-manager__block + .sequence-manager__block {
+  margin-top: 0.2em;
+}
+.sequence-manager__block img {
+  width: 0.8em;
+}
+.sequence-manager__block img.remove-block {
+  cursor: pointer;
+}
+.sequence-manager__block p {
+  margin: 0;
+}
+.sequence-manager__block.pomodoro {
+  background-color: #23BDDC;
+}
+.sequence-manager__block.pomodoro:hover {
+  background-color: #4fcae3;
+}
+.sequence-manager__block.break {
+  background-color: #FF952C;
+}
+.sequence-manager__block.break:hover {
+  background-color: #ffaf5f;
+}
+.sequence-manager__block.dragging.pomodoro {
+  background-color: #1c97b0;
+}
+.sequence-manager__block.dragging.break {
+  background-color: #f87b00;
 }
 
 /*# sourceMappingURL=style.css.map */

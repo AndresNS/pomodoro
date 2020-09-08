@@ -1,0 +1,52 @@
+.sequence-manager {
+    width: 100%;
+    padding: .5em;
+    border: 1px solid $color-gray-light;
+    border-radius: 3px;
+
+    &__block {
+        border-radius: 3px;
+        display: flex;
+        justify-content: space-between;
+        color: #fff;
+        padding: .5em .8em;
+        cursor: move;
+
+        &+.sequence-manager__block {
+            margin-top: .2em;
+        }
+
+        img {
+            width: .8em;
+
+            &.remove-block {
+                cursor: pointer;
+            }
+        }
+
+        p {
+            margin: 0;
+        }
+
+        &.pomodoro {
+            background-color: $color-primary;
+            &:hover {
+                background-color: lighten($color-primary, 10%);
+            }
+        }
+
+        &.break {
+            background-color: $color-secondary;
+            &:hover {
+                background-color: lighten($color-secondary, 10%);
+            }
+        }
+
+        &.dragging.pomodoro {
+            background-color: darken($color-primary, 10%);
+        }
+        &.dragging.break {
+            background-color: darken($color-secondary, 10%);
+        }
+    }
+}
