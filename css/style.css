@@ -827,6 +827,49 @@ body {
   transform: rotate(45deg);
   z-index: -1;
 }
+.input-group__radio {
+  display: block;
+  position: relative;
+  padding-left: 2em;
+  margin-bottom: 1em;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.input-group__radio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.input-group__radio input:checked ~ .checkmark {
+  background-color: white;
+}
+.input-group__radio input:checked ~ .checkmark:after {
+  display: block;
+}
+.input-group__radio .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: white;
+  border-radius: 50%;
+  border: 2px solid #23BDDC;
+}
+.input-group__radio .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  top: 4px;
+  left: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #23BDDC;
+}
 
 .button {
   border: none;

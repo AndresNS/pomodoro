@@ -11,6 +11,7 @@
             max-width: 20%;
             text-align: center;
             appearance: textfield;
+
             &[type=number]::-webkit-inner-spin-button,
             &[type=number]::-webkit-outer-spin-button {
                 -moz-appearance: none;
@@ -79,6 +80,7 @@
 
     &__dropdown {
         width: 100%;
+
         .dropdown-arrow {
             position: relative;
 
@@ -106,6 +108,56 @@
                 -ms-transform: rotate(45deg);
                 transform: rotate(45deg);
                 z-index: map-get($z-index, behind-elements);
+            }
+        }
+    }
+
+    &__radio {
+        display: block;
+        position: relative;
+        padding-left: 2em;
+        margin-bottom: 1em;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
+        input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+
+            &:checked~.checkmark {
+                background-color: white;
+
+                &:after {
+                    display: block;
+                }
+            }
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: white;
+            border-radius: 50%;
+            border: 2px solid $color-primary;
+
+            &:after {
+                content: "";
+                position: absolute;
+                display: none;
+                top: 4px;
+                left: 4px;
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: $color-primary;
+
             }
         }
     }
