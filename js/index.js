@@ -169,9 +169,25 @@ if (document.querySelector(".settings-section") !== null) {
 
 	//VOLUME CONTROL
 	const slider = document.querySelector(".volume-control__slider .slider");
+	const volumeIcon = document.querySelector(".volume-control__icon img");
+	volumeIcon.addEventListener("click",()=>{
+		slider.value = 0;
+		slider.style.background = setSliderStyle(0);
+		volumeIcon.src = "img/icon-volume-off.svg";
+	});
+	
 	slider.style.background = setSliderStyle(slider.value);
 	slider.oninput = function () {
 		this.style.background = setSliderStyle(this.value);
+		if (slider.value == 0) {
+			volumeIcon.src = "img/icon-volume-off.svg";
+		} else if (slider.value > 0 && slider.value <= 10) {
+			volumeIcon.src = "img/icon-volume-mute.svg";
+		} else if (slider.value > 10 && slider.value <= 60) {
+			volumeIcon.src = "img/icon-volume-down.svg";
+		} else if (slider.value > 60 && slider.value <= 100) {
+			volumeIcon.src = "img/icon-volume-up.svg";
+		}
 	};
 
 	/******* NEW BLOCK MODAL *******/
@@ -190,7 +206,7 @@ if (document.querySelector(".settings-section") !== null) {
 		//Create block
 		const newBlockElement = document.createElement("div");
 		newBlockElement.classList.add("sequence-manager__block");
-		
+
 		newBlockElement.setAttribute("draggable", "true");
 
 		//Append child elements

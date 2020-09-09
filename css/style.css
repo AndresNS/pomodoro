@@ -907,8 +907,13 @@ body {
 }
 .volume-control__icon {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   margin-right: 1em;
+}
+.volume-control__icon img {
+  width: 1em;
+  height: 1em;
+  cursor: pointer;
 }
 .volume-control__slider {
   width: 100%;
