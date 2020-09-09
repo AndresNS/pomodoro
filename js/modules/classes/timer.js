@@ -1,10 +1,13 @@
 "use strict";
 import {
 	updateTimerDisplay
-} from "./helper-functions.js";
-import {
-	default as ProgressBar
-} from "./timer-progress-bar.js";
+} from "../helper-functions.js";
+// import {
+// 	default as ProgressBar
+// } from "../timer-progress-bar.js";
+import sessionData from "../session-data.js";
+import HorizontalProgressBar from "../classes/horizontal-progress-bar.js";
+import CircularProgressBar from "../classes/circular-progress-bar.js";
 
 export default class Timer {
 	constructor(timerDisplay, initialMinutes, initialSeconds = 0) {
@@ -17,6 +20,13 @@ export default class Timer {
 		this.currentSecond = initialSeconds;
 		this.currentBlock = 0;
 		this.alarmSound = new Audio("../../src/sounds/piano.mp3");
+
+		const deskProgressBarElement = document.querySelector(".timer__progress-bar__current--desktop");
+		const mobileProgressBarElement = document.querySelector(".timer__progress-bar__current--mobile");
+		this.progressBarUI = {
+			hProgressBar: new HorizontalProgressBar(deskProgressBarElement, sessionData.pomMin, sessionData.sequence),
+			cProgressBar: new CircularProgressBar(mobileProgressBarElement, sessionData.pomMin, sessionData.sequence)
+		};
 	}
 
 	//Start Timer
@@ -38,8 +48,8 @@ export default class Timer {
 					this.currentSecond -= 1;
 				}
 
-				ProgressBar.hProgressBar.addProgress();
-				ProgressBar.mProgressBar.addProgress();
+				this.progressBarUI.hProgressBar.addProgress();
+				this.progressBarUI.cProgressBar.addProgress();
 				updateTimerDisplay(this.timerDisplay, this.currentMinute, this.currentSecond);
 			}, 100);
 		});
@@ -57,12 +67,12 @@ export default class Timer {
 		this.isRunning = false;
 		this.setCurrentTime(this.initialMinutes, this.initialSeconds);
 		updateTimerDisplay(this.timerDisplay, this.currentMinute, this.currentSecond);
-		ProgressBar.hProgressBar.setTotalTime(this.initialMinutes);
-		ProgressBar.mProgressBar.setTotalTime(this.initialMinutes);
-		ProgressBar.hProgressBar.setIncrementValue();
-		ProgressBar.mProgressBar.setIncrementValue();
-		ProgressBar.hProgressBar.resetProgress(this.currentBlock);
-		ProgressBar.mProgressBar.resetProgress(this.currentBlock);
+		this.progressBarUI.hProgressBar.setTotalTime(this.initialMinutes);
+		this.progressBarUI.cProgressBar.setTotalTime(this.initialMinutes);
+		this.progressBarUI.hProgressBar.setIncrementValue();
+		this.progressBarUI.cProgressBar.setIncrementValue();
+		this.progressBarUI.hProgressBar.resetProgress(this.currentBlock);
+		this.progressBarUI.cProgressBar.resetProgress(this.currentBlock);
 	}
 
 	setInitialTime(mins, secs) {
