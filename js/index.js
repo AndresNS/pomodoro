@@ -154,34 +154,8 @@ if (document.querySelector(".timer") !== null) {
 if (document.querySelector(".settings-section") !== null) {
 	//SEQUENCE MANAGER
 	const sequenceManagerContainer = document.querySelector(".sequence-manager");
-	const newBlockButton = document.querySelector(".button.button--primary.new-block");
 	updateSequenceManagerElements();
 
-	newBlockButton.addEventListener("click", () => {
-		//Create block
-		const newBlockElement = document.createElement("div");
-		newBlockElement.classList.add("sequence-manager__block");
-		newBlockElement.classList.add("pomodoro");
-		newBlockElement.setAttribute("draggable", "true");
-
-		//Append child elements
-		const barsIcon = document.createElement("img");
-		barsIcon.setAttribute("src", "img/icon-bars.svg");
-		newBlockElement.appendChild(barsIcon);
-
-		const blockText = document.createElement("p");
-		blockText.textContent = "Pomodoro";
-		newBlockElement.appendChild(blockText);
-
-		const removeBlockIcon = document.createElement("img");
-		removeBlockIcon.setAttribute("src", "img/icon-close.svg");
-		removeBlockIcon.classList.add("remove-block");
-		newBlockElement.appendChild(removeBlockIcon);
-
-		sequenceManagerContainer.appendChild(newBlockElement);
-		updateSequenceManagerElements();
-	});
-	
 	sequenceManagerContainer.addEventListener("dragover", (e) => {
 		e.preventDefault();
 		const afterElement = getDragAfterElement(sequenceManagerContainer, e.clientY);
@@ -199,6 +173,82 @@ if (document.querySelector(".settings-section") !== null) {
 	slider.oninput = function () {
 		this.style.background = setSliderStyle(this.value);
 	};
+
+	/******* NEW BLOCK MODAL *******/
+
+	const openModalButtons = document.querySelectorAll("[data-modal-target]");
+	const closeModalButtons = document.querySelectorAll("[data-close-button]");
+	const modalOverlay = document.getElementById("overlay");
+	const addBlockButton = document.querySelector(".button.button--secondary.add-block");
+
+	addBlockButton.addEventListener("click", () => {
+		const radioButtonOptions = document.querySelectorAll(".input-group__radio .block-type-option");
+		const blockType = Array.from(radioButtonOptions).find((option) => {
+			return option.checked;
+		});
+
+		//Create block
+		const newBlockElement = document.createElement("div");
+		newBlockElement.classList.add("sequence-manager__block");
+		
+		newBlockElement.setAttribute("draggable", "true");
+
+		//Append child elements
+		const barsIcon = document.createElement("img");
+		barsIcon.setAttribute("src", "img/icon-bars.svg");
+		newBlockElement.appendChild(barsIcon);
+
+		const blockText = document.createElement("p");
+		switch (blockType.value) {
+			case "pomodoro":
+				newBlockElement.classList.add("pomodoro");
+				blockText.textContent = "Pomodoro";
+				break;
+			case "short-break":
+				newBlockElement.classList.add("break");
+				blockText.textContent = "Short Break";
+				break;
+			case "long-break":
+				newBlockElement.classList.add("break");
+				blockText.textContent = "Long Break";
+				break;
+		}
+		newBlockElement.appendChild(blockText);
+
+		const removeBlockIcon = document.createElement("img");
+		removeBlockIcon.setAttribute("src", "img/icon-close.svg");
+		removeBlockIcon.classList.add("remove-block");
+		newBlockElement.appendChild(removeBlockIcon);
+
+		sequenceManagerContainer.appendChild(newBlockElement);
+		updateSequenceManagerElements();
+		const modal = addBlockButton.closest(".modal");
+		closeModal(modal, modalOverlay);
+	});
+
+	openModalButtons.forEach((button) => {
+		button.addEventListener("click", () => {
+			const modal = document.querySelector(button.dataset.modalTarget);
+			openModal(modal, modalOverlay, sequenceManagerContainer);
+		});
+	});
+
+	closeModalButtons.forEach((button) => {
+		button.addEventListener("click", () => {
+			const modal = button.closest(".modal");
+			closeModal(modal, modalOverlay);
+		});
+	});
+
+	modalOverlay.addEventListener("click", () => {
+		const modals = document.querySelectorAll(".modal.active");
+		modals.forEach((modal) => {
+			closeModal(modal, modalOverlay);
+		});
+	});
+
+
+	/******* END NEW BLOCK MODAL *******/
 }
 
 /******* END SETTINGS *******/
@@ -247,44 +297,19 @@ function getDragAfterElement(container, y) {
 	}).element;
 }
 
-/******* END SETTINGS HELPER FUNCTIONS *******/
-
-/******* MODAL *******/
-
-const openModalButtons = document.querySelectorAll("[data-modal-target]");
-const closeModalButtons = document.querySelectorAll("[data-close-button]");
-const modalOverlay = document.getElementById("overlay");
-
-openModalButtons.forEach((button)=>{
-	button.addEventListener("click", ()=>{
-		const modal = document.querySelector(button.dataset.modalTarget);
-		openModal(modal);
-	});
-});
-
-closeModalButtons.forEach((button)=>{
-	button.addEventListener("click", ()=>{
-		const modal = button.closest(".modal");
-		closeModal(modal);
-	});
-});
-
-modalOverlay.addEventListener("click", ()=>{
-	const modals = document.querySelectorAll(".modal.active");
-	modals.forEach((modal)=>{
-		closeModal(modal);
-	});
-});
-
-function openModal(modal){
-	if(modal == null) return;
+function openModal(modal, overlay) {
+	if (modal == null) return;
 	modal.classList.add("active");
-	modalOverlay.classList.add("active");
+	overlay.classList.add("active");
+
+	const radioButtonOptions = document.querySelectorAll(".input-group__radio .block-type-option");
+	radioButtonOptions[0].checked = true;
 }
 
-function closeModal(modal){
-	if(modal == null) return;
+function closeModal(modal, overlay) {
+	if (modal == null) return;
 	modal.classList.remove("active");
-	modalOverlay.classList.remove("active");
+	overlay.classList.remove("active");
 }
-/******* END MODAL *******/
+
+/******* END SETTINGS HELPER FUNCTIONS *******/
