@@ -116,7 +116,36 @@
             </div>
             <div class="settings-section__row">
                 <div class="button-container-50">
-                    <button type="button" class="button button--primary new-block">New block</button>
+                    <button data-modal-target="#modal" type="button" class="button button--primary new-block">New block</button>
+                    <div class="modal" id="modal">
+                        <h2 class="modal__title">Select Block Type</h2>
+                        <hr class="modal__title__separator">
+                        <div class="modal__row">
+                            <div class="input-group">
+                                <div class="input-group__radio">
+                                    <input type="radio" name="block-type" id="pomodoro" value="pomodoro">
+                                    <label for="pomodoro">Pomodoro</label>
+                                </div>
+                                <div class="input-group__radio">
+                                    <input type="radio" name="block-type" id="short-break" value="short-break">
+                                    <label for="pomodoro">Short Break</label>
+                                </div>
+                                <div class="input-group__radio">
+                                    <input type="radio" name="block-type" id="long-break" value="long-break">
+                                    <label for="pomodoro">Long Break</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal__row modal__row--space-around">
+                            <div class="button-container-45">
+                                <button data-close-button type="button" class="button button--primary">Cancel</button>
+                            </div>
+                            <div class="button-container-45">
+                                <button type="button" class="button button--secondary">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-overlay" id="overlay"></div>
                 </div>
             </div>
         </div>

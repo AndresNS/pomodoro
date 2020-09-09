@@ -30,9 +30,10 @@ $section-margin: 3em;
 
 //z-index levels
 $z-index:(
-    header-items: 1000,
-    header: 800,
-    modal:600,
+    modal:1000,
+    modal-overlay:900,
+    header-items: 800,
+    header: 600,
     timer-sequence-controls: 500,
     body: 400,
     behind-elements: -1,
