@@ -269,19 +269,50 @@ if (document.querySelector(".settings-section") !== null) {
 	/******* END NEW BLOCK MODAL *******/
 
 	//DEFAULTS AND SAVE SETTINGS BUTTONS
+
 	const defaultsButton = document.getElementById("defaults-button");
 	const saveButton = document.getElementById("save-button");
+	const pomodoroMinutesInput = document.getElementById("pomodoro-min");
+	const shortBreakMinutesInput = document.getElementById("short-break-min");
+	const longBreakMinutesInput = document.getElementById("long-break-min");
 	const autostartInput = document.getElementById("autostart");
+	const volumeControlInput = document.getElementById("volume-control");
 
+	//load user settings
+	pomodoroMinutesInput.value = userSettings.pomMin;
+	shortBreakMinutesInput.value = userSettings.shortBreakMins;
+	longBreakMinutesInput.value = userSettings.longBreakMins;
 	autostartInput.checked = userSettings.autostart;
+	volumeControlInput.value = userSettings.alarmVolume;
+	slider.style.background = setSliderStyle(userSettings.alarmVolume);
 
+	//save new settings
 	saveButton.addEventListener("click", () => {
-		userSettings.autostart = autostartInput.checked;
+		try{
+			userSettings.pomMin = pomodoroMinutesInput.value;
+			userSettings.shortBreakMins = shortBreakMinutesInput.value;
+			userSettings.longBreakMins = longBreakMinutesInput.value;
+			userSettings.autostart = autostartInput.checked;
+			userSettings.alarmVolume = volumeControlInput.value;
+	
+			localStorage.setItem("userSettings", JSON.stringify(userSettings));
 
-		localStorage.setItem("userSettings", JSON.stringify(userSettings));
+			console.log("Settings saved.");
+		}catch(e){
+			console.error("Error: "+e);
+		}
 	});
 
+	//set default settings
+	defaultsButton.addEventListener("click", ()=>{
+		try{
 
+
+			console.log("Settings saved.");
+		}catch(e){
+			console.error("Error: "+e);
+		}
+	});
 
 
 }

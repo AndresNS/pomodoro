@@ -7,7 +7,7 @@ import {
 const defaultSettings = {
 	isDefault: false,
 	sequence: [0, 1, 0, 1, 0, 1, 0, 2],
-	pomMin: 1,
+	pomMin: 25,
 	shortBreakMins: 5,
 	longBreakMins: 10,
 	autostart: true,
@@ -35,7 +35,7 @@ if (checkLocalStorage()) {
 			userSettings.autostart = settingsObject.autostart;
 			userSettings.alarmSound = settingsObject.alarmSound;
 			userSettings.alarmVolume = settingsObject.alarmVolume;
-		}else{
+		} else {
 			userSettings = settingsObject;
 		}
 	}
