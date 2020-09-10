@@ -7,7 +7,7 @@ import {
 const defaultSettings = {
 	isDefault: false,
 	sequence: [0, 1, 0, 1, 0, 1, 0, 2],
-	pomMin: 25,
+	pomMin: 1,
 	shortBreakMins: 5,
 	longBreakMins: 10,
 	autostart: true,
@@ -27,6 +27,7 @@ if (checkLocalStorage()) {
 		//Get user settings
 		const settingsObject = JSON.parse(localStorage.getItem("userSettings"));
 		if (!settingsObject.isDefault) {
+			userSettings.isDefault = false;
 			userSettings.sequence = settingsObject.sequence;
 			userSettings.pomMin = settingsObject.pomMin;
 			userSettings.shortBreakMins = settingsObject.shortBreakMins;
@@ -34,6 +35,8 @@ if (checkLocalStorage()) {
 			userSettings.autostart = settingsObject.autostart;
 			userSettings.alarmSound = settingsObject.alarmSound;
 			userSettings.alarmVolume = settingsObject.alarmVolume;
+		}else{
+			userSettings = settingsObject;
 		}
 	}
 } else {

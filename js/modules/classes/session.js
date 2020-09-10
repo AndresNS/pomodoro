@@ -3,18 +3,18 @@
 import Timer from "./timer.js";
 
 export default class Session {
-	constructor(sequence, pomomodoroMinutes, shortBreakMinutes, longBreakMinutes, timerDisplay) {
+	constructor(userSettings, timerDisplay) {
 		//Singleton
 		if (Session.instance instanceof Session) {
 			return Session.instance;
 		}
-		this.sequence = sequence;
+		this.sequence = userSettings.sequence;
 		this.currentBlock = 0;
-		this.pomomodoroMinutes = pomomodoroMinutes;
-		this.shortBreakMinutes = shortBreakMinutes;
-		this.longBreakMinutes = longBreakMinutes;
-		this.timer = new Timer(timerDisplay, pomomodoroMinutes);
-		this.autostart = true;
+		this.pomomodoroMinutes = userSettings.pomMin;
+		this.shortBreakMinutes = userSettings.shortBreakMins;
+		this.longBreakMinutes = userSettings.longBreakMins;
+		this.timer = new Timer(timerDisplay, userSettings.pomMin);
+		this.autostart = userSettings.autostart;
 
 		Session.instance = this;
 	}

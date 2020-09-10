@@ -62,7 +62,7 @@ if (document.querySelector(".timer") !== null) {
 	updateTimerDisplay(timerDisplay, userSettings.pomMin, 0);
 
 	//Create Session
-	const session = new Session(userSettings.sequence, userSettings.pomMin, userSettings.shortBreakMins, userSettings.longBreakMins, timerDisplay);
+	const session = new Session(userSettings, timerDisplay);
 
 	//Timer sequence display
 	const sequenceDisplayList = document.querySelector(".sequence-display__list");
@@ -172,12 +172,12 @@ if (document.querySelector(".settings-section") !== null) {
 	//VOLUME CONTROL
 	const slider = document.querySelector(".volume-control__slider .slider");
 	const volumeIcon = document.querySelector(".volume-control__icon img");
-	volumeIcon.addEventListener("click",()=>{
+	volumeIcon.addEventListener("click", () => {
 		slider.value = 0;
 		slider.style.background = setSliderStyle(0);
 		volumeIcon.src = "img/icon-volume-off.svg";
 	});
-	
+
 	slider.style.background = setSliderStyle(slider.value);
 	slider.oninput = function () {
 		this.style.background = setSliderStyle(this.value);
@@ -271,7 +271,19 @@ if (document.querySelector(".settings-section") !== null) {
 	//DEFAULTS AND SAVE SETTINGS BUTTONS
 	const defaultsButton = document.getElementById("defaults-button");
 	const saveButton = document.getElementById("save-button");
-	
+	const autostartInput = document.getElementById("autostart");
+
+	autostartInput.checked = userSettings.autostart;
+
+	saveButton.addEventListener("click", () => {
+		userSettings.autostart = autostartInput.checked;
+
+		localStorage.setItem("userSettings", JSON.stringify(userSettings));
+	});
+
+
+
+
 }
 
 /******* END SETTINGS *******/

@@ -51,7 +51,7 @@ export default class Timer {
 				this.progressBarUI.hProgressBar.addProgress();
 				this.progressBarUI.cProgressBar.addProgress();
 				updateTimerDisplay(this.timerDisplay, this.currentMinute, this.currentSecond);
-			}, 1000);
+			}, 100);
 		});
 	}
 
