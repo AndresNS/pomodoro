@@ -205,41 +205,8 @@ if (document.querySelector(".settings-section") !== null) {
 			return option.checked;
 		});
 
-		//Create block
-		const newBlockElement = document.createElement("div");
-		newBlockElement.classList.add("sequence-manager__block");
+		createBlock(blockType.value, sequenceManagerContainer);
 
-		newBlockElement.setAttribute("draggable", "true");
-
-		//Append child elements
-		const barsIcon = document.createElement("img");
-		barsIcon.setAttribute("src", "img/icon-bars.svg");
-		newBlockElement.appendChild(barsIcon);
-
-		const blockText = document.createElement("p");
-		switch (blockType.value) {
-			case "pomodoro":
-				newBlockElement.classList.add("pomodoro");
-				blockText.textContent = "Pomodoro";
-				break;
-			case "short-break":
-				newBlockElement.classList.add("break");
-				blockText.textContent = "Short Break";
-				break;
-			case "long-break":
-				newBlockElement.classList.add("break");
-				blockText.textContent = "Long Break";
-				break;
-		}
-		newBlockElement.appendChild(blockText);
-
-		const removeBlockIcon = document.createElement("img");
-		removeBlockIcon.setAttribute("src", "img/icon-close.svg");
-		removeBlockIcon.classList.add("remove-block");
-		newBlockElement.appendChild(removeBlockIcon);
-
-		sequenceManagerContainer.appendChild(newBlockElement);
-		updateSequenceManagerElements();
 		const modal = addBlockButton.closest(".modal");
 		closeModal(modal, modalOverlay);
 	});
@@ -286,31 +253,62 @@ if (document.querySelector(".settings-section") !== null) {
 	volumeControlInput.value = userSettings.alarmVolume;
 	slider.style.background = setSliderStyle(userSettings.alarmVolume);
 
+	userSettings.sequence.forEach((block) => {
+		switch (block) {
+			case 0:
+				createBlock("pomodoro", sequenceManagerContainer);
+				break;
+			case 1:
+				createBlock("short-break", sequenceManagerContainer);
+				break;
+			case 2:
+				createBlock("long-break", sequenceManagerContainer);
+				break;
+		}
+	});
+
 	//save new settings
 	saveButton.addEventListener("click", () => {
-		try{
+		try {
 			userSettings.pomMin = pomodoroMinutesInput.value;
 			userSettings.shortBreakMins = shortBreakMinutesInput.value;
 			userSettings.longBreakMins = longBreakMinutesInput.value;
 			userSettings.autostart = autostartInput.checked;
 			userSettings.alarmVolume = volumeControlInput.value;
-	
+			let newSequence = [];
+			const sequenceList = sequenceManagerContainer.children;
+			for (let i = 0; i < sequenceList.length; i++) {
+				switch (sequenceList[i].getAttribute("data-block-type")) {
+					case "pomodoro":
+						newSequence.push(0);
+						break;
+					case "short-break":
+						newSequence.push(1);
+						break;
+					case "long-break":
+						newSequence.push(2);
+						break;
+				}
+			}
+
+			userSettings.sequence = newSequence;
+
 			localStorage.setItem("userSettings", JSON.stringify(userSettings));
 
 			console.log("Settings saved.");
-		}catch(e){
-			console.error("Error: "+e);
+		} catch (e) {
+			console.error("Error: " + e);
 		}
 	});
 
 	//set default settings
-	defaultsButton.addEventListener("click", ()=>{
-		try{
+	defaultsButton.addEventListener("click", () => {
+		try {
 
 
 			console.log("Settings saved.");
-		}catch(e){
-			console.error("Error: "+e);
+		} catch (e) {
+			console.error("Error: " + e);
 		}
 	});
 
@@ -381,6 +379,47 @@ function closeModal(modal, overlay) {
 	overlay.classList.remove("active");
 	const body = document.getElementsByTagName("body")[0];
 	body.classList.remove("overflow-hidden");
+}
+
+function createBlock(blockType, managerContainer) {
+	//Create block
+	const newBlockElement = document.createElement("div");
+	newBlockElement.classList.add("sequence-manager__block");
+
+	newBlockElement.setAttribute("draggable", "true");
+
+	//Append child elements
+	const barsIcon = document.createElement("img");
+	barsIcon.setAttribute("src", "img/icon-bars.svg");
+	newBlockElement.appendChild(barsIcon);
+
+	const blockText = document.createElement("p");
+	switch (blockType) {
+		case "pomodoro":
+			newBlockElement.classList.add("pomodoro");
+			newBlockElement.setAttribute("data-block-type", "pomodoro");
+			blockText.textContent = "Pomodoro";
+			break;
+		case "short-break":
+			newBlockElement.classList.add("break");
+			newBlockElement.setAttribute("data-block-type", "short-break");
+			blockText.textContent = "Short Break";
+			break;
+		case "long-break":
+			newBlockElement.classList.add("break");
+			newBlockElement.setAttribute("data-block-type", "long-break");
+			blockText.textContent = "Long Break";
+			break;
+	}
+	newBlockElement.appendChild(blockText);
+
+	const removeBlockIcon = document.createElement("img");
+	removeBlockIcon.setAttribute("src", "img/icon-close.svg");
+	removeBlockIcon.classList.add("remove-block");
+	newBlockElement.appendChild(removeBlockIcon);
+
+	managerContainer.appendChild(newBlockElement);
+	updateSequenceManagerElements();
 }
 
 /******* END SETTINGS HELPER FUNCTIONS *******/
