@@ -1,8 +1,11 @@
 .sequence-manager {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     padding: .5em;
     border: 1px solid $color-gray-light;
     border-radius: 3px;
+    margin-bottom: 1.5em;
 
     &__block {
         border-radius: 3px;

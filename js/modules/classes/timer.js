@@ -5,7 +5,7 @@ import {
 // import {
 // 	default as ProgressBar
 // } from "../timer-progress-bar.js";
-import sessionData from "../session-data.js";
+import userSettings from "../settings.js";
 import HorizontalProgressBar from "../classes/horizontal-progress-bar.js";
 import CircularProgressBar from "../classes/circular-progress-bar.js";
 
@@ -24,8 +24,8 @@ export default class Timer {
 		const deskProgressBarElement = document.querySelector(".timer__progress-bar__current--desktop");
 		const mobileProgressBarElement = document.querySelector(".timer__progress-bar__current--mobile");
 		this.progressBarUI = {
-			hProgressBar: new HorizontalProgressBar(deskProgressBarElement, sessionData.pomMin, sessionData.sequence),
-			cProgressBar: new CircularProgressBar(mobileProgressBarElement, sessionData.pomMin, sessionData.sequence)
+			hProgressBar: new HorizontalProgressBar(deskProgressBarElement, userSettings.pomMin, userSettings.sequence),
+			cProgressBar: new CircularProgressBar(mobileProgressBarElement, userSettings.pomMin, userSettings.sequence)
 		};
 	}
 
@@ -51,7 +51,7 @@ export default class Timer {
 				this.progressBarUI.hProgressBar.addProgress();
 				this.progressBarUI.cProgressBar.addProgress();
 				updateTimerDisplay(this.timerDisplay, this.currentMinute, this.currentSecond);
-			}, 100);
+			}, 1000);
 		});
 	}
 

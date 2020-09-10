@@ -51,11 +51,6 @@
 
 @media (min-width: $screen-lg) {
     .timer {
-        // position: relative;
-        // width: 100%;
-        // display: flex;
-        // justify-content: center;
-        // align-items: center;
         flex-direction: column-reverse;
 
         &::before {
@@ -66,8 +61,6 @@
             position: relative;
             width: 50%;
             height: .3em;
-            // align-items: center;
-            // justify-content: center;
 
             &__current--mobile {
                 display: none;
@@ -80,7 +73,6 @@
                 animation: none;
                 display: flex;
 
-                // transition: width 1s ease-in-out;
                 &.pomodoro {
                     background-color: $color-primary;
                 }
@@ -96,10 +88,6 @@
                 border-radius: 0;
                 display: flex;
             }
-        }
-
-        &__display {
-            // font-size: $font-size-XL;
         }
     }
 }

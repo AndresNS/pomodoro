@@ -5,9 +5,9 @@ import {
 	updateTimerDisplay,
 	addElement
 } from "./modules/helper-functions.js";
-import sessionData from "./modules/session-data.js";
+import userSettings from "./modules/settings.js";
 
-//NAV BAR
+/******* NAV BAR *******/
 const header = document.querySelector("header");
 const headerNav = document.querySelector(".header__nav");
 const headerLogo = document.querySelector(".header__logo");
@@ -46,6 +46,8 @@ function toggleMenu(translateValue) {
 	});
 }
 
+/******* END NAV BAR *******/
+
 /******* POMODORO TIMER *******/
 if (document.querySelector(".timer") !== null) {
 	//HOME PAGE
@@ -57,15 +59,15 @@ if (document.querySelector(".timer") !== null) {
 	const timerDisplay = document.querySelector(".timer__display");
 
 	//Set initial time
-	updateTimerDisplay(timerDisplay, sessionData.pomMin, 0);
+	updateTimerDisplay(timerDisplay, userSettings.pomMin, 0);
 
 	//Create Session
-	const session = new Session(sessionData.sequence, sessionData.pomMin, sessionData.shortBreakMins, sessionData.longBreakMins, timerDisplay);
+	const session = new Session(userSettings.sequence, userSettings.pomMin, userSettings.shortBreakMins, userSettings.longBreakMins, timerDisplay);
 
 	//Timer sequence display
 	const sequenceDisplayList = document.querySelector(".sequence-display__list");
 	//Load list from settings
-	sessionData.sequence.forEach((block) => {
+	userSettings.sequence.forEach((block) => {
 		switch (block) {
 			case 0:
 				addElement("Focus", "li", sequenceDisplayList);
@@ -265,6 +267,11 @@ if (document.querySelector(".settings-section") !== null) {
 
 
 	/******* END NEW BLOCK MODAL *******/
+
+	//DEFAULTS AND SAVE SETTINGS BUTTONS
+	const defaultsButton = document.getElementById("defaults-button");
+	const saveButton = document.getElementById("save-button");
+	
 }
 
 /******* END SETTINGS *******/
@@ -320,12 +327,17 @@ function openModal(modal, overlay) {
 
 	const radioButtonOptions = document.querySelectorAll(".input-group__radio .block-type-option");
 	radioButtonOptions[0].checked = true;
+	const body = document.getElementsByTagName("body")[0];
+	body.classList.add("overflow-hidden");
+
 }
 
 function closeModal(modal, overlay) {
 	if (modal == null) return;
 	modal.classList.remove("active");
 	overlay.classList.remove("active");
+	const body = document.getElementsByTagName("body")[0];
+	body.classList.remove("overflow-hidden");
 }
 
 /******* END SETTINGS HELPER FUNCTIONS *******/

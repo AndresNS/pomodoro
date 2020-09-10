@@ -39,27 +39,29 @@
         <div class="settings-section">
             <h2 class="settings-section__title">Custom times</h2>
             <hr class="settings-section__separator">
-            <div class="settings-section__row">
-                <div class="input-group">
-                    <div class="input-group__number">
-                        <label for="pomodoro-min">Pomodoro</label>
-                        <input type="number" id="pomodoro-min" min="1" value="25">
+            <div class="settings-section__body settings-section__body--flex-row">
+                <div class="settings-section__body__row">
+                    <div class="input-group">
+                        <div class="input-group__number">
+                            <label for="pomodoro-min">Pomodoro</label>
+                            <input type="number" id="pomodoro-min" min="1" value="25">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="settings-section__row">
-                <div class="input-group">
-                    <div class="input-group__number">
-                        <label for="short-break-min">Short Break</label>
-                        <input type="number" id="short-break-min" min="1" value="5">
+                <div class="settings-section__body__row">
+                    <div class="input-group">
+                        <div class="input-group__number">
+                            <label for="short-break-min">Short Break</label>
+                            <input type="number" id="short-break-min" min="1" value="5">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="settings-section__row">
-                <div class="input-group">
-                    <div class="input-group__number">
-                        <label for="long-break-min">Long Break</label>
-                        <input type="number" id="long-break-min" min="1" value="10">
+                <div class="settings-section__body__row">
+                    <div class="input-group">
+                        <div class="input-group__number">
+                            <label for="long-break-min">Long Break</label>
+                            <input type="number" id="long-break-min" min="1" value="10">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -69,87 +71,93 @@
         <div class="settings-section">
             <h2 class="settings-section__title">Custom sequence</h2>
             <hr class="settings-section__separator">
-            <div class="settings-section__row">
-                <div class="sequence-manager">
-                    <div class="sequence-manager__block pomodoro" draggable="true">
-                        <img src="img/icon-bars.svg">
-                        <p>Pomodoro</p>
-                        <img class="remove-block" src="img/icon-close.svg">
-                    </div>
-                    <div class="sequence-manager__block break" draggable="true">
-                        <img src="img/icon-bars.svg">
-                        <p>Short Break</p>
-                        <img class="remove-block" src="img/icon-close.svg">
-                    </div>
-                    <div class="sequence-manager__block pomodoro" draggable="true">
-                        <img src="img/icon-bars.svg">
-                        <p>Pomodoro</p>
-                        <img class="remove-block" src="img/icon-close.svg">
-                    </div>
-                    <div class="sequence-manager__block break" draggable="true">
-                        <img src="img/icon-bars.svg">
-                        <p>Short Break</p>
-                        <img class="remove-block" src="img/icon-close.svg">
-                    </div>
-                    <div class="sequence-manager__block pomodoro" draggable="true">
-                        <img src="img/icon-bars.svg">
-                        <p>Pomodoro</p>
-                        <img class="remove-block" src="img/icon-close.svg">
-                    </div>
-                    <div class="sequence-manager__block break" draggable="true">
-                        <img src="img/icon-bars.svg">
-                        <p>Short Break</p>
-                        <img class="remove-block" src="img/icon-close.svg">
-                    </div>
-                    <div class="sequence-manager__block pomodoro" draggable="true">
-                        <img src="img/icon-bars.svg">
-                        <p>Pomodoro</p>
-                        <img class="remove-block" src="img/icon-close.svg">
-                    </div>
-                    <div class="sequence-manager__block break" draggable="true">
-                        <img src="img/icon-bars.svg">
-                        <p>Long Break</p>
-                        <img class="remove-block" src="img/icon-close.svg">
-                    </div>
+            <div class="settings-section__body">
+                <div class="settings-section__body__row">
+                    <div class="sequence-manager">
+                        <div class="sequence-manager__block pomodoro" draggable="true">
+                            <img src="img/icon-bars.svg">
+                            <p>Pomodoro</p>
+                            <img class="remove-block" src="img/icon-close.svg">
+                        </div>
+                        <div class="sequence-manager__block break" draggable="true">
+                            <img src="img/icon-bars.svg">
+                            <p>Short Break</p>
+                            <img class="remove-block" src="img/icon-close.svg">
+                        </div>
+                        <div class="sequence-manager__block pomodoro" draggable="true">
+                            <img src="img/icon-bars.svg">
+                            <p>Pomodoro</p>
+                            <img class="remove-block" src="img/icon-close.svg">
+                        </div>
+                        <div class="sequence-manager__block break" draggable="true">
+                            <img src="img/icon-bars.svg">
+                            <p>Short Break</p>
+                            <img class="remove-block" src="img/icon-close.svg">
+                        </div>
+                        <div class="sequence-manager__block pomodoro" draggable="true">
+                            <img src="img/icon-bars.svg">
+                            <p>Pomodoro</p>
+                            <img class="remove-block" src="img/icon-close.svg">
+                        </div>
+                        <div class="sequence-manager__block break" draggable="true">
+                            <img src="img/icon-bars.svg">
+                            <p>Short Break</p>
+                            <img class="remove-block" src="img/icon-close.svg">
+                        </div>
+                        <div class="sequence-manager__block pomodoro" draggable="true">
+                            <img src="img/icon-bars.svg">
+                            <p>Pomodoro</p>
+                            <img class="remove-block" src="img/icon-close.svg">
+                        </div>
+                        <div class="sequence-manager__block break" draggable="true">
+                            <img src="img/icon-bars.svg">
+                            <p>Long Break</p>
+                            <img class="remove-block" src="img/icon-close.svg">
+                        </div>
 
-                </div>
-            </div>
-            <div class="settings-section__row">
-                <div class="button-container-50">
-                    <button data-modal-target="#modal" type="button" class="button button--primary new-block">New
-                        block</button>
-                    <div class="modal" id="modal">
-                        <h2 class="modal__title">Select Block Type</h2>
-                        <hr class="modal__title__separator">
-                        <div class="modal__row">
-                            <div class="input-group">
-                                <label class="input-group__radio">
-                                    Pomodoro
-                                    <input type="radio" name="block-type" class="block-type-option" id="pomodoro" value="pomodoro">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="input-group__radio">
-                                    Short Break
-                                    <input type="radio" name="block-type" class="block-type-option" id="short-break" value="short-break">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="input-group__radio">
-                                    Long Break
-                                    <input type="radio" name="block-type" class="block-type-option" id="long-break" value="long-break">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="modal__row modal__row--space-around">
-                            <div class="button-container-45">
-                                <button data-close-button type="button" class="button button--primary">Cancel</button>
-                            </div>
-                            <div class="button-container-45">
-                                <button type="button" class="button button--secondary add-block">Add Block</button>
-                            </div>
-                        </div>
                     </div>
-                    <div class="modal-overlay" id="overlay"></div>
+                </div>
+                <div class="settings-section__body__row">
+                    <div class="button-container-50">
+                        <button data-modal-target="#modal" type="button" class="button button--primary new-block">New
+                            block</button>
+                        <div class="modal" id="modal">
+                            <h2 class="modal__title">Select Block Type</h2>
+                            <hr class="modal__title__separator">
+                            <div class="modal__row">
+                                <div class="input-group">
+                                    <label class="input-group__radio">
+                                        Pomodoro
+                                        <input type="radio" name="block-type" class="block-type-option" id="pomodoro"
+                                            value="pomodoro">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <label class="input-group__radio">
+                                        Short Break
+                                        <input type="radio" name="block-type" class="block-type-option" id="short-break"
+                                            value="short-break">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <label class="input-group__radio">
+                                        Long Break
+                                        <input type="radio" name="block-type" class="block-type-option" id="long-break"
+                                            value="long-break">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="modal__row modal__row--space-around">
+                                <div class="button-container-45">
+                                    <button data-close-button type="button"
+                                        class="button button--primary">Cancel</button>
+                                </div>
+                                <div class="button-container-45">
+                                    <button type="button" class="button button--secondary add-block">Add Block</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-overlay" id="overlay"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -158,13 +166,15 @@
         <div class="settings-section">
             <h2 class="settings-section__title">Autostart</h2>
             <hr class="settings-section__separator">
-            <div class="settings-section__row">
-                <div class="input-group">
-                    <label class="input-group__checkbox">
-                        Automatically start next timer when the current one ends.
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
+            <div class="settings-section__body">
+                <div class="settings-section__body__row">
+                    <div class="input-group">
+                        <label class="input-group__checkbox">
+                            Automatically start next timer when the current one ends.
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
@@ -173,19 +183,21 @@
         <div class="settings-section">
             <h2 class="settings-section__title">Alarm sound</h2>
             <hr class="settings-section__separator">
-            <div class="settings-section__row">
-                <div class="input-group__dropdown">
-                    <div class="dropdown-arrow">
-                        <select>
-                            <option value="">Sample sound 1</option>
-                            <option value="">Sample sound 2</option>
-                        </select>
+            <div class="settings-section__body">
+                <div class="settings-section__body__row">
+                    <div class="input-group__dropdown">
+                        <div class="dropdown-arrow">
+                            <select>
+                                <option value="">Sample sound 1</option>
+                                <option value="">Sample sound 2</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="settings-section__row">
-                <div class="button-container-50">
-                    <button type="button" class="button button--primary">Test sound</button>
+                <div class="settings-section__body__row">
+                    <div class="button-container-50">
+                        <button type="button" class="button button--primary">Test sound</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -194,27 +206,31 @@
         <div class="settings-section">
             <h2 class="settings-section__title">Alarm volume</h2>
             <hr class="settings-section__separator">
-            <div class="settings-section__row">
-                <div class="volume-control">
-                    <div class="volume-control__icon">
-                        <img src="img/icon-volume-up.svg" alt="open menu">
-                    </div>
-                    <div class="volume-control__slider">
-                        <input class="slider" type="range" min="0" max="100" value="80">
+            <div class="settings-section__body">
+                <div class="settings-section__body__row">
+                    <div class="volume-control">
+                        <div class="volume-control__icon">
+                            <img src="img/icon-volume-up.svg" alt="open menu">
+                        </div>
+                        <div class="volume-control__slider">
+                            <input class="slider" type="range" min="0" max="100" value="80">
+                        </div>
                     </div>
                 </div>
+                <div class="settings-section__body__row"></div>
             </div>
-            <div class="settings-section__row"></div>
         </div>
 
         <!-- Buttons -->
         <div class="settings-section">
-            <div class="settings-section__row settings-section__row--space-between">
-                <div class="button-container-45">
-                    <button type="button" class="button button--primary">Defaults</button>
-                </div>
-                <div class="button-container-45">
-                    <button type="button" class="button button--secondary">Save</button>
+            <div class="settings-section__body">
+                <div class="settings-section__body__row settings-section__body__row--space-between">
+                    <div class="button-container-45">
+                        <button id="defaults-button" type="button" class="button button--primary">Defaults</button>
+                    </div>
+                    <div class="button-container-45">
+                        <button id="save-button" type="button" class="button button--secondary">Save</button>
+                    </div>
                 </div>
             </div>
         </div>

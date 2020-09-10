@@ -11,3 +11,14 @@ export function addElement(text, tag, parent) {
 	element.textContent = text;
 	parent.appendChild(element);
 }
+
+export function checkLocalStorage() {
+	const pomodoro = "pomodoro";
+	try {
+		localStorage.setItem(pomodoro, pomodoro);
+		localStorage.removeItem(pomodoro);
+		return true;
+	} catch (e) {
+		return false;
+	}
+}
