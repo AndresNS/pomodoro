@@ -2,9 +2,6 @@
 import {
 	updateTimerDisplay
 } from "../helper-functions.js";
-// import {
-// 	default as ProgressBar
-// } from "../timer-progress-bar.js";
 import userSettings from "../settings.js";
 import HorizontalProgressBar from "../classes/horizontal-progress-bar.js";
 import CircularProgressBar from "../classes/circular-progress-bar.js";
@@ -20,6 +17,7 @@ export default class Timer {
 		this.currentSecond = initialSeconds;
 		this.currentBlock = 0;
 		this.alarmSound = new Audio("../../src/sounds/piano.mp3");
+
 
 		const deskProgressBarElement = document.querySelector(".timer__progress-bar__current--desktop");
 		const mobileProgressBarElement = document.querySelector(".timer__progress-bar__current--mobile");
@@ -37,6 +35,7 @@ export default class Timer {
 
 				//Stops timer when done
 				if (this.currentMinute == 0 && this.currentSecond == 0) {
+					this.alarmSound.volume = userSettings.alarmVolume / 100;
 					this.alarmSound.play();
 					resolve();
 				}

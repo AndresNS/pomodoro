@@ -191,6 +191,11 @@ if (document.querySelector(".settings-section") !== null) {
 			volumeIcon.src = "img/icon-volume-up.svg";
 		}
 	};
+	slider.addEventListener("change", ()=>{
+		const alarmSound = new Audio(userSettings.alarmSound);
+		alarmSound.volume = slider.value / 100;
+		alarmSound.play();
+	});
 
 	/******* NEW BLOCK MODAL *******/
 
@@ -239,11 +244,18 @@ if (document.querySelector(".settings-section") !== null) {
 
 	const defaultsButton = document.getElementById("defaults-button");
 	const saveButton = document.getElementById("save-button");
+	const testVolumeButton = document.getElementById("test-sound");
 	const pomodoroMinutesInput = document.getElementById("pomodoro-min");
 	const shortBreakMinutesInput = document.getElementById("short-break-min");
 	const longBreakMinutesInput = document.getElementById("long-break-min");
 	const autostartInput = document.getElementById("autostart");
 	const volumeControlInput = document.getElementById("volume-control");
+
+	testVolumeButton.addEventListener("click", ()=>{
+		const alarmSound = new Audio(userSettings.alarmSound);
+		alarmSound.volume = userSettings.alarmVolume / 100;
+		alarmSound.play();
+	});
 
 	//load user settings
 	pomodoroMinutesInput.value = userSettings.pomMin;
@@ -304,9 +316,7 @@ if (document.querySelector(".settings-section") !== null) {
 	//set default settings
 	defaultsButton.addEventListener("click", () => {
 		try {
-
-
-			console.log("Settings saved.");
+			console.log("Settings restored to default values.");
 		} catch (e) {
 			console.error("Error: " + e);
 		}
