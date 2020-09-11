@@ -44,7 +44,7 @@
                     <div class="input-group">
                         <div class="input-group__number">
                             <label for="pomodoro-min">Pomodoro</label>
-                            <input type="number" id="pomodoro-min" min="1" value="25">
+                            <input type="number" id="pomodoro-min" min="1" value="25" step="1"  pattern="[0-9]" title="Numbers only" onkeydown="if(event.key==='.'){event.preventDefault();}"  oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');">
                         </div>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                     <div class="input-group">
                         <div class="input-group__number">
                             <label for="short-break-min">Short Break</label>
-                            <input type="number" id="short-break-min" min="1" value="5">
+                            <input type="number" id="short-break-min" min="1" max="59" value="5" step="1" pattern="[0-9]" title="Numbers only" onkeydown="if(event.key==='.'){event.preventDefault();}"  oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');">
                         </div>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                     <div class="input-group">
                         <div class="input-group__number">
                             <label for="long-break-min">Long Break</label>
-                            <input type="number" id="long-break-min" min="1" value="10">
+                            <input type="number" id="long-break-min" min="1" max="59" value="10" step="1" pattern="[0-9]" title="Numbers only" onkeydown="if(event.key==='.'){event.preventDefault();}"  oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');">
                         </div>
                     </div>
                 </div>
@@ -194,6 +194,8 @@
             </div>
         </div>
     </div>
+
+    <div class="toast" id="toast"></div>
 
     <!-- FOOTER -->
     <footer>Developed by Andr&eacute;s Navarro S.</footer>

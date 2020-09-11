@@ -6,6 +6,7 @@ import {
 	addElement
 } from "./modules/helper-functions.js";
 import userSettings from "./modules/settings.js";
+import Toast from "./modules/classes/toast.js";
 
 /******* NAV BAR *******/
 const header = document.querySelector("header");
@@ -58,11 +59,11 @@ if (document.querySelector(".timer") !== null) {
 	const resetButton = document.querySelector(".timer-controls__button.reset");
 	const timerDisplay = document.querySelector(".timer__display");
 
-	//Set initial time
-	updateTimerDisplay(timerDisplay, userSettings.pomMin, 0);
-
 	//Create Session
 	const session = new Session(userSettings, timerDisplay);
+
+	//Set initial time
+	updateTimerDisplay(timerDisplay, session.timer.initialMinutes, 0);
 
 	//Timer sequence display
 	const sequenceDisplayList = document.querySelector(".sequence-display__list");
@@ -152,8 +153,8 @@ if (document.querySelector(".timer") !== null) {
 /******* END POMODORO TIMER *******/
 
 /******* SETTINGS *******/
-
 if (document.querySelector(".settings-section") !== null) {
+
 	//SEQUENCE MANAGER
 	const sequenceManagerContainer = document.querySelector(".sequence-manager");
 	updateSequenceManagerElements();
@@ -205,15 +206,27 @@ if (document.querySelector(".settings-section") !== null) {
 	const addBlockButton = document.querySelector(".button.button--secondary.add-block");
 
 	addBlockButton.addEventListener("click", () => {
-		const radioButtonOptions = document.querySelectorAll(".input-group__radio .block-type-option");
-		const blockType = Array.from(radioButtonOptions).find((option) => {
-			return option.checked;
-		});
-
-		createBlock(blockType.value, sequenceManagerContainer);
-
-		const modal = addBlockButton.closest(".modal");
-		closeModal(modal, modalOverlay);
+		try{
+			const radioButtonOptions = document.querySelectorAll(".input-group__radio .block-type-option");
+			const blockType = Array.from(radioButtonOptions).find((option) => {
+				return option.checked;
+			});
+	
+			createBlock(blockType.value, sequenceManagerContainer);
+	
+			const modal = addBlockButton.closest(".modal");
+			closeModal(modal, modalOverlay);
+	
+			const toastElement = document.getElementById("toast");
+			const toast = new Toast(toastElement, "New block added.", "success");
+			toast.show();
+		}catch (e){
+			const toastElement = document.getElementById("toast");
+			const toast = new Toast(toastElement, "Error. Couldn't add block.", "error");
+			toast.show();
+			console.error("Error: " + e);
+		}
+		
 	});
 
 	openModalButtons.forEach((button) => {
@@ -271,7 +284,7 @@ if (document.querySelector(".settings-section") !== null) {
 				alarmSound = new Audio("../../src/sounds/ding.mp3");
 				break;
 		}
-		
+
 		alarmSound.volume = userSettings.alarmVolume / 100;
 		alarmSound.play();
 	});
@@ -307,7 +320,7 @@ if (document.querySelector(".settings-section") !== null) {
 					userSettings.alarmSound.path = "../../src/sounds/ding.mp3";
 					break;
 			}
-			
+
 			userSettings.alarmVolume = volumeControlInput.value;
 			let newSequence = [];
 			const sequenceList = sequenceManagerContainer.children;
@@ -329,8 +342,13 @@ if (document.querySelector(".settings-section") !== null) {
 
 			localStorage.setItem("userSettings", JSON.stringify(userSettings));
 
-			console.log("Settings saved.");
+			const toastElement = document.getElementById("toast");
+			const toast = new Toast(toastElement, "Settings saved.", "success");
+			toast.show();
 		} catch (e) {
+			const toastElement = document.getElementById("toast");
+			const toast = new Toast(toastElement, "Error. Couldn't save settings.", "error");
+			toast.show();
 			console.error("Error: " + e);
 		}
 	});

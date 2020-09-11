@@ -355,6 +355,24 @@ template {
     clip-path: polygon(50% 50%, 50% -50%, -50% 50%, 50% 150%, 150% 50%, 50% -50%);
   }
 }
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    right: 0;
+  }
+  15% {
+    opacity: 1;
+    right: 3em;
+  }
+  85% {
+    opacity: 1;
+    right: 3em;
+  }
+  100% {
+    opacity: 0;
+    right: 0;
+  }
+}
 .input-group__dropdown .dropdown-arrow select, .input-group__number input {
   padding: 0.6em 1em;
   border: 2px solid #EFEFEF;
@@ -1123,6 +1141,29 @@ body {
 .modal-overlay.active {
   opacity: 1;
   pointer-events: all;
+}
+
+.toast {
+  position: fixed;
+  bottom: 2em;
+  right: 0em;
+  color: white;
+  padding: 1em 3em;
+  border-radius: 3px;
+  box-shadow: 0px 3px 6px 3px rgba(0, 0, 0, 0.2);
+  z-index: 1200;
+  visibility: hidden;
+  opacity: 0;
+}
+.toast--visible {
+  visibility: visible;
+  animation: fadeInOut 6s;
+}
+.toast--success {
+  background-color: green;
+}
+.toast--error {
+  background-color: red;
 }
 
 /*# sourceMappingURL=style.css.map */

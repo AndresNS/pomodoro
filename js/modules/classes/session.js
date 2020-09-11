@@ -13,7 +13,17 @@ export default class Session {
 		this.pomomodoroMinutes = userSettings.pomMin;
 		this.shortBreakMinutes = userSettings.shortBreakMins;
 		this.longBreakMinutes = userSettings.longBreakMins;
-		this.timer = new Timer(timerDisplay, userSettings.pomMin);
+		switch (userSettings.sequence[0]) {
+			case 0:
+				this.timer = new Timer(timerDisplay, userSettings.pomMin);
+				break;
+			case 1:
+				this.timer = new Timer(timerDisplay, userSettings.shortBreakMins);
+				break;
+			case 2:
+				this.timer = new Timer(timerDisplay, userSettings.longBreakMins);
+				break;
+		}
 		this.autostart = userSettings.autostart;
 
 		Session.instance = this;
@@ -47,7 +57,17 @@ export default class Session {
 	}
 
 	resetSession() {
-		this.timer.setInitialTime(this.pomomodoroMinutes, 0);
+		switch (this.sequence[0]) {
+			case 0:
+				this.timer.setInitialTime(this.pomomodoroMinutes, 0);
+				break;
+			case 1:
+				this.timer.setInitialTime(this.shortBreakMinutes, 0);
+				break;
+			case 2:
+				this.timer.setInitialTime(this.longBreakMinutes, 0);
+				break;
+		}
 		this.currentBlock = 0;
 		this.timer.currentBlock = 0;
 		this.resetTimer();
