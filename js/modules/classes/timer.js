@@ -16,7 +16,7 @@ export default class Timer {
 		this.currentMinute = initialMinutes;
 		this.currentSecond = initialSeconds;
 		this.currentBlock = 0;
-		this.alarmSound = new Audio("../../src/sounds/piano.mp3");
+		this.alarmSound = new Audio(userSettings.alarmSound.path);
 
 
 		const deskProgressBarElement = document.querySelector(".timer__progress-bar__current--desktop");

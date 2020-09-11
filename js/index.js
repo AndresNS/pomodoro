@@ -191,8 +191,8 @@ if (document.querySelector(".settings-section") !== null) {
 			volumeIcon.src = "img/icon-volume-up.svg";
 		}
 	};
-	slider.addEventListener("change", ()=>{
-		const alarmSound = new Audio(userSettings.alarmSound);
+	slider.addEventListener("change", () => {
+		const alarmSound = new Audio(userSettings.alarmSound.path);
 		alarmSound.volume = slider.value / 100;
 		alarmSound.play();
 	});
@@ -249,21 +249,32 @@ if (document.querySelector(".settings-section") !== null) {
 	const shortBreakMinutesInput = document.getElementById("short-break-min");
 	const longBreakMinutesInput = document.getElementById("long-break-min");
 	const autostartInput = document.getElementById("autostart");
+	const alarmSoundInput = document.getElementById("alarm-sound");
 	const volumeControlInput = document.getElementById("volume-control");
-
-	testVolumeButton.addEventListener("click", ()=>{
-		const alarmSound = new Audio(userSettings.alarmSound);
-		alarmSound.volume = userSettings.alarmVolume / 100;
-		alarmSound.play();
-	});
 
 	//load user settings
 	pomodoroMinutesInput.value = userSettings.pomMin;
 	shortBreakMinutesInput.value = userSettings.shortBreakMins;
 	longBreakMinutesInput.value = userSettings.longBreakMins;
 	autostartInput.checked = userSettings.autostart;
+	alarmSoundInput.value = userSettings.alarmSound.name;
 	volumeControlInput.value = userSettings.alarmVolume;
 	slider.style.background = setSliderStyle(userSettings.alarmVolume);
+
+	testVolumeButton.addEventListener("click", () => {
+		let alarmSound;
+		switch (alarmSoundInput.value) {
+			case "piano":
+				alarmSound = new Audio("../../src/sounds/piano.mp3");
+				break;
+			case "ding":
+				alarmSound = new Audio("../../src/sounds/ding.mp3");
+				break;
+		}
+		
+		alarmSound.volume = userSettings.alarmVolume / 100;
+		alarmSound.play();
+	});
 
 	userSettings.sequence.forEach((block) => {
 		switch (block) {
@@ -286,6 +297,17 @@ if (document.querySelector(".settings-section") !== null) {
 			userSettings.shortBreakMins = shortBreakMinutesInput.value;
 			userSettings.longBreakMins = longBreakMinutesInput.value;
 			userSettings.autostart = autostartInput.checked;
+			switch (alarmSoundInput.value) {
+				case "piano":
+					userSettings.alarmSound.name = alarmSoundInput.value;
+					userSettings.alarmSound.path = "../../src/sounds/piano.mp3";
+					break;
+				case "ding":
+					userSettings.alarmSound.name = alarmSoundInput.value;
+					userSettings.alarmSound.path = "../../src/sounds/ding.mp3";
+					break;
+			}
+			
 			userSettings.alarmVolume = volumeControlInput.value;
 			let newSequence = [];
 			const sequenceList = sequenceManagerContainer.children;

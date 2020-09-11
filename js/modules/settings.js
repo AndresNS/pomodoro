@@ -11,7 +11,10 @@ const defaultSettings = {
 	shortBreakMins: 5,
 	longBreakMins: 10,
 	autostart: true,
-	alarmSound: "../../src/sounds/piano.mp3",
+	alarmSound: {
+		name: "piano",
+		path: "../../src/sounds/piano.mp3"
+	},
 	alarmVolume: 80
 };
 
