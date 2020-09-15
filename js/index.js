@@ -128,8 +128,10 @@ if (document.querySelector(".timer") !== null) {
 	playButton.addEventListener("click", function () {
 		if (this.classList.contains("play")) {
 			session.startTimer();
+			this.childNodes[0].src = "img/icon-pause.svg";
 		} else {
 			session.pauseTimer();
+			this.childNodes[0].src = "img/icon-play.svg";
 		}
 		this.classList.toggle("play");
 		this.classList.toggle("pause");
@@ -140,6 +142,7 @@ if (document.querySelector(".timer") !== null) {
 		if (playButton.classList.contains("pause")) {
 			playButton.classList.toggle("play");
 			playButton.classList.toggle("pause");
+			playButton.childNodes[0].src = "img/icon-play.svg";
 		}
 	});
 
@@ -148,6 +151,7 @@ if (document.querySelector(".timer") !== null) {
 		if (playButton.classList.contains("pause")) {
 			playButton.classList.toggle("play");
 			playButton.classList.toggle("pause");
+			playButton.childNodes[0].src = "img/icon-play.svg";
 		}
 		sequenceDisplayList.style.transform = "translateX(0px)";
 		listItemTranslateValue = 0;
@@ -393,6 +397,9 @@ if (document.querySelector(".settings-section") !== null) {
 			});
 
 			//Clear sequence manager before creating blocks
+			while(sequenceManagerContainer.hasChildNodes()){
+				sequenceManagerContainer.removeChild(sequenceManagerContainer.childNodes[0]);
+			}
 
 			userSettings.sequence.forEach((block) => {
 				switch (block) {
