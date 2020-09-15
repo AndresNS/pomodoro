@@ -5,7 +5,11 @@ import {
 	updateTimerDisplay,
 	addElement
 } from "./modules/helper-functions.js";
-import userSettings from "./modules/settings.js";
+import {
+	getUserSettings,
+	saveUserSettings,
+	setDefaultSettings
+} from "./modules/settings.js";
 import Toast from "./modules/classes/toast.js";
 
 /******* NAV BAR *******/
@@ -60,6 +64,7 @@ if (document.querySelector(".timer") !== null) {
 	const timerDisplay = document.querySelector(".timer__display");
 
 	//Create Session
+	let userSettings = getUserSettings();
 	const session = new Session(userSettings, timerDisplay);
 
 	//Set initial time
@@ -155,6 +160,9 @@ if (document.querySelector(".timer") !== null) {
 /******* SETTINGS *******/
 if (document.querySelector(".settings-section") !== null) {
 
+	//LOAD USER SETTINGS
+	let userSettings = getUserSettings();
+
 	//SEQUENCE MANAGER
 	const sequenceManagerContainer = document.querySelector(".sequence-manager");
 	updateSequenceManagerElements();
@@ -206,27 +214,27 @@ if (document.querySelector(".settings-section") !== null) {
 	const addBlockButton = document.querySelector(".button.button--secondary.add-block");
 
 	addBlockButton.addEventListener("click", () => {
-		try{
+		try {
 			const radioButtonOptions = document.querySelectorAll(".input-group__radio .block-type-option");
 			const blockType = Array.from(radioButtonOptions).find((option) => {
 				return option.checked;
 			});
-	
+
 			createBlock(blockType.value, sequenceManagerContainer);
-	
+
 			const modal = addBlockButton.closest(".modal");
 			closeModal(modal, modalOverlay);
-	
+
 			const toastElement = document.getElementById("toast");
 			const toast = new Toast(toastElement, "New block added.", "success");
 			toast.show();
-		}catch (e){
+		} catch (e) {
 			const toastElement = document.getElementById("toast");
 			const toast = new Toast(toastElement, "Error. Couldn't add block.", "error");
 			toast.show();
 			console.error("Error: " + e);
 		}
-		
+
 	});
 
 	openModalButtons.forEach((button) => {
@@ -265,7 +273,7 @@ if (document.querySelector(".settings-section") !== null) {
 	const alarmSoundInput = document.getElementById("alarm-sound");
 	const volumeControlInput = document.getElementById("volume-control");
 
-	//load user settings
+	//load user settings (Could be a function)
 	pomodoroMinutesInput.value = userSettings.pomMin;
 	shortBreakMinutesInput.value = userSettings.shortBreakMins;
 	longBreakMinutesInput.value = userSettings.longBreakMins;
@@ -340,7 +348,7 @@ if (document.querySelector(".settings-section") !== null) {
 
 			userSettings.sequence = newSequence;
 
-			localStorage.setItem("userSettings", JSON.stringify(userSettings));
+			saveUserSettings(userSettings);
 
 			const toastElement = document.getElementById("toast");
 			const toast = new Toast(toastElement, "Settings saved.", "success");
@@ -356,8 +364,57 @@ if (document.querySelector(".settings-section") !== null) {
 	//set default settings
 	defaultsButton.addEventListener("click", () => {
 		try {
-			console.log("Settings restored to default values.");
+			setDefaultSettings();
+
+			userSettings = getUserSettings();
+
+			//load user settings (Could be a function)
+			pomodoroMinutesInput.value = userSettings.pomMin;
+			shortBreakMinutesInput.value = userSettings.shortBreakMins;
+			longBreakMinutesInput.value = userSettings.longBreakMins;
+			autostartInput.checked = userSettings.autostart;
+			alarmSoundInput.value = userSettings.alarmSound.name;
+			volumeControlInput.value = userSettings.alarmVolume;
+			slider.style.background = setSliderStyle(userSettings.alarmVolume);
+
+			testVolumeButton.addEventListener("click", () => {
+				let alarmSound;
+				switch (alarmSoundInput.value) {
+					case "piano":
+						alarmSound = new Audio("../../src/sounds/piano.mp3");
+						break;
+					case "ding":
+						alarmSound = new Audio("../../src/sounds/ding.mp3");
+						break;
+				}
+
+				alarmSound.volume = userSettings.alarmVolume / 100;
+				alarmSound.play();
+			});
+
+			//Clear sequence manager before creating blocks
+
+			userSettings.sequence.forEach((block) => {
+				switch (block) {
+					case 0:
+						createBlock("pomodoro", sequenceManagerContainer);
+						break;
+					case 1:
+						createBlock("short-break", sequenceManagerContainer);
+						break;
+					case 2:
+						createBlock("long-break", sequenceManagerContainer);
+						break;
+				}
+			});
+
+			const toastElement = document.getElementById("toast");
+			const toast = new Toast(toastElement, "Settings restored to default values.", "success");
+			toast.show();
 		} catch (e) {
+			const toastElement = document.getElementById("toast");
+			const toast = new Toast(toastElement, "Error. Couldn't save settings.", "error");
+			toast.show();
 			console.error("Error: " + e);
 		}
 	});

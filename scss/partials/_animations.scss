@@ -21,15 +21,38 @@
 }
 
 @keyframes fadeInOut {
-
-    0%{
+    0% {
         opacity: 0;
-        right: 0;    
+        right: 0;
     }
-    15%{
+
+    15% {
         opacity: 1;
         right: 3em;
     }
+
+    85% {
+        opacity: 1;
+        right: 3em;
+    }
+
+    100% {
+        opacity: 0;
+        right: 0;
+    }
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        right: 0;
+    }
+
+    15% {
+        opacity: 1;
+        right: 3em;
+    }
+
     85% {
         opacity: 1;
         right: 3em;

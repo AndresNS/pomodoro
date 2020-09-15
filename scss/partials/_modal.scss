@@ -3,7 +3,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
-    transition: 200ms ease-in-out;
+    transition: transform 200ms ease-in-out;
     background-color: #fff;
     border-radius: 3px;
     box-shadow: 0px 3px 6px 3px rgba(0, 0, 0, 0.2);
@@ -42,7 +42,7 @@
     &-overlay {
         position: fixed;
         opacity: 0;
-        transition: 200ms ease-in-out;
+        transition: opacity 200ms ease-in-out;
         top: 0;
         left: 0;
         right: 0;
