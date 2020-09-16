@@ -292,8 +292,11 @@ if (document.querySelector(".settings-section") !== null) {
 			case "piano":
 				alarmSound = new Audio("../../src/sounds/piano.mp3");
 				break;
-			case "ding":
-				alarmSound = new Audio("../../src/sounds/ding.mp3");
+			case "callbell":
+				alarmSound = new Audio("../../src/sounds/callbell.mp3");
+				break;
+			case "dingdong":
+				alarmSound = new Audio("../../src/sounds/dingdong.wav");
 				break;
 		}
 
@@ -450,6 +453,11 @@ function updateSequenceManagerElements() {
 		draggable.addEventListener("dragend", () => {
 			draggable.classList.remove("dragging");
 		});
+
+		// draggable.addEventListener("touchmove", (e)=>{
+		// 	e.preventDefault();
+		// 	console.log("asdf");
+		// });
 	});
 }
 

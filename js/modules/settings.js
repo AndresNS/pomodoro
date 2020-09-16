@@ -9,7 +9,7 @@ const defaultSettings = {
 	sequence: [0, 1, 0, 1, 0, 1, 0, 2],
 	pomMin: 25,
 	shortBreakMins: 5,
-	longBreakMins: 10,
+	longBreakMins: 15,
 	autostart: true,
 	alarmSound: {
 		name: "piano",
