@@ -328,11 +328,15 @@ if (document.querySelector(".settings-section") !== null) {
 			switch (alarmSoundInput.value) {
 				case "piano":
 					userSettings.alarmSound.name = alarmSoundInput.value;
-					userSettings.alarmSound.path = "../../src/sounds/piano.mp3";
+					userSettings.alarmSound.path = "https://raw.githubusercontent.com/andresns/pomodoro/master/src/sounds/piano.mp3";
 					break;
-				case "ding":
+				case "callbell":
 					userSettings.alarmSound.name = alarmSoundInput.value;
-					userSettings.alarmSound.path = "../../src/sounds/ding.mp3";
+					userSettings.alarmSound.path = "https://raw.githubusercontent.com/andresns/pomodoro/master/src/sounds/callbell.mp3";
+					break;
+				case "dingdong":
+					userSettings.alarmSound.name = alarmSoundInput.value;
+					userSettings.alarmSound.path = "https://raw.githubusercontent.com/andresns/pomodoro/master/src/sounds/dingdong.wav";
 					break;
 			}
 
@@ -388,10 +392,13 @@ if (document.querySelector(".settings-section") !== null) {
 				let alarmSound;
 				switch (alarmSoundInput.value) {
 					case "piano":
-						alarmSound = new Audio("../../src/sounds/piano.mp3");
+						alarmSound = new Audio("https://raw.githubusercontent.com/andresns/pomodoro/master/src/sounds/piano.wav");
 						break;
-					case "ding":
-						alarmSound = new Audio("../../src/sounds/ding.mp3");
+					case "callbell":
+						alarmSound = new Audio("https://raw.githubusercontent.com/andresns/pomodoro/master/src/sounds/callbell.wav");
+						break;
+					case "dingdong":
+						alarmSound = new Audio("https://raw.githubusercontent.com/andresns/pomodoro/master/src/sounds/dingdong.wav");
 						break;
 				}
 
