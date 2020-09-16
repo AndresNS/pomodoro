@@ -13,7 +13,7 @@ const defaultSettings = {
 	autostart: true,
 	alarmSound: {
 		name: "piano",
-		path: "../../src/sounds/piano.mp3"
+		path: "https://raw.githubusercontent.com/andresns/pomodoro/master/src/sounds/piano.mp3"
 	},
 	alarmVolume: 80
 };

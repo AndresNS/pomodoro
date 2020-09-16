@@ -392,10 +392,10 @@ if (document.querySelector(".settings-section") !== null) {
 				let alarmSound;
 				switch (alarmSoundInput.value) {
 					case "piano":
-						alarmSound = new Audio("https://raw.githubusercontent.com/andresns/pomodoro/master/src/sounds/piano.wav");
+						alarmSound = new Audio("https://raw.githubusercontent.com/andresns/pomodoro/master/src/sounds/piano.mp3");
 						break;
 					case "callbell":
-						alarmSound = new Audio("https://raw.githubusercontent.com/andresns/pomodoro/master/src/sounds/callbell.wav");
+						alarmSound = new Audio("https://raw.githubusercontent.com/andresns/pomodoro/master/src/sounds/callbell.mp3");
 						break;
 					case "dingdong":
 						alarmSound = new Audio("https://raw.githubusercontent.com/andresns/pomodoro/master/src/sounds/dingdong.wav");
